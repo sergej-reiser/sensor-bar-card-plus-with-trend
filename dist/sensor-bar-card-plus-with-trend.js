@@ -1067,13 +1067,20 @@
   }
   function indexHistoryResponse(response, entityIds) {
     const indexed = {};
-    if (!Array.isArray(response)) return indexed;
-    response.forEach((states, index) => {
-      var _a, _b;
-      if (!Array.isArray(states)) return;
-      const entityId = (_b = (_a = states.find((state) => state == null ? void 0 : state.entity_id)) == null ? void 0 : _a.entity_id) != null ? _b : entityIds[index];
-      if (entityId) indexed[entityId] = states;
-    });
+    if (response && typeof response === "object" && !Array.isArray(response)) {
+      for (const entityId of entityIds) {
+        if (Array.isArray(response[entityId])) indexed[entityId] = response[entityId];
+      }
+      return indexed;
+    }
+    if (Array.isArray(response)) {
+      response.forEach((states, index) => {
+        var _a, _b;
+        if (!Array.isArray(states)) return;
+        const entityId = (_b = (_a = states.find((state) => state == null ? void 0 : state.entity_id)) == null ? void 0 : _a.entity_id) != null ? _b : entityIds[index];
+        if (entityId) indexed[entityId] = states;
+      });
+    }
     return indexed;
   }
   var TREND_CACHE_MS;
