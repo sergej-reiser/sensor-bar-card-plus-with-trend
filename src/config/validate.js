@@ -155,6 +155,12 @@ function validateTrend(diagnostics, trend, path, entity = null) {
   if (trend.position !== 'after_name') {
     addWarning(diagnostics, 'trend.invalid_position', 'The only supported trend position is after_name.', `${path}.trend.position`, entity);
   }
+  if (!['normal', 'bold'].includes(trend.font_weight)) {
+    addWarning(diagnostics, 'trend.invalid_font_weight', 'Trend font_weight must be normal or bold.', `${path}.trend.font_weight`, entity);
+  }
+  if (!['normal', 'italic'].includes(trend.font_style)) {
+    addWarning(diagnostics, 'trend.invalid_font_style', 'Trend font_style must be normal or italic.', `${path}.trend.font_style`, entity);
+  }
 }
 
 function validateConfigScope(diagnostics, config, path, entity = null) {

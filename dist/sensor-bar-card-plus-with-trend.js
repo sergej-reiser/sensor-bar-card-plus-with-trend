@@ -458,7 +458,7 @@
     };
   }
   function normalizeTrendConfig(entityConfig, cardConfig) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u;
     const inherited = (_a = cardConfig == null ? void 0 : cardConfig.trend) != null ? _a : {};
     const raw = entityConfig == null ? void 0 : entityConfig.trend;
     const source = raw && typeof raw === "object" && !Array.isArray(raw) ? raw : {};
@@ -467,7 +467,12 @@
       hours: (_e = (_d = source.hours) != null ? _d : inherited.hours) != null ? _e : 24,
       decimals: (_g = (_f = source.decimals) != null ? _f : inherited.decimals) != null ? _g : 1,
       deadband: (_i = (_h = source.deadband) != null ? _h : inherited.deadband) != null ? _i : 0.5,
-      position: (_k = (_j = source.position) != null ? _j : inherited.position) != null ? _k : "after_name"
+      position: (_k = (_j = source.position) != null ? _j : inherited.position) != null ? _k : "after_name",
+      up_color: (_m = (_l = source.up_color) != null ? _l : inherited.up_color) != null ? _m : "#2196f3",
+      stable_color: (_o = (_n = source.stable_color) != null ? _n : inherited.stable_color) != null ? _o : "#757575",
+      down_color: (_q = (_p = source.down_color) != null ? _p : inherited.down_color) != null ? _q : "#f44336",
+      font_weight: (_s = (_r = source.font_weight) != null ? _r : inherited.font_weight) != null ? _s : "normal",
+      font_style: (_u = (_t = source.font_style) != null ? _t : inherited.font_style) != null ? _u : "normal"
     };
   }
   function normalizeEntityConfig(entityConfig, cardConfig) {
@@ -754,6 +759,12 @@
     }
     if (trend.position !== "after_name") {
       addWarning(diagnostics, "trend.invalid_position", "The only supported trend position is after_name.", `${path}.trend.position`, entity);
+    }
+    if (!["normal", "bold"].includes(trend.font_weight)) {
+      addWarning(diagnostics, "trend.invalid_font_weight", "Trend font_weight must be normal or bold.", `${path}.trend.font_weight`, entity);
+    }
+    if (!["normal", "italic"].includes(trend.font_style)) {
+      addWarning(diagnostics, "trend.invalid_font_style", "Trend font_style must be normal or italic.", `${path}.trend.font_style`, entity);
     }
   }
   function validateConfigScope(diagnostics, config, path, entity = null) {
@@ -1342,7 +1353,10 @@
           const decimals = Number.isInteger(config.decimals) ? Math.max(0, Math.min(10, config.decimals)) : 1;
           const magnitude = Math.abs(trend.delta).toFixed(decimals);
           const unit = (_d = (_c = (_a = entityCfg.formatting) == null ? void 0 : _a.unit) != null ? _c : (_b = stateObj == null ? void 0 : stateObj.attributes) == null ? void 0 : _b.unit_of_measurement) != null ? _d : "";
-          return `<span class="trend-indicator" aria-label="Change ${escapeHtml(trend.delta.toFixed(decimals))} ${escapeHtml(unit)}">${trend.arrow} ${escapeHtml(magnitude)}${unit ? ` ${escapeHtml(unit)}` : ""}</span>`;
+          const direction = trend.arrow === "\u2191" ? "up" : trend.arrow === "\u2193" ? "down" : "stable";
+          const color = config[`${direction}_color`];
+          const style = `color:${color};font-weight:${config.font_weight};font-style:${config.font_style}`;
+          return `<span class="trend-indicator trend-${direction}" style="${escapeHtml(style)}" aria-label="Change ${escapeHtml(trend.delta.toFixed(decimals))} ${escapeHtml(unit)}">${trend.arrow} ${escapeHtml(magnitude)}${unit ? ` ${escapeHtml(unit)}` : ""}</span>`;
         }
         _formatNameMarkup(name, entityCfg, stateObj) {
           const trendMarkup = this._formatTrendMarkup(entityCfg, stateObj);
@@ -2166,9 +2180,7 @@
         .trend-indicator {
           display: inline;
           margin-left: 0.35em;
-          color: var(--secondary-text-color, #727272);
           font-variant-numeric: tabular-nums;
-          font-weight: 500;
         }
         .bar-wrap {
           flex: 1 1 var(--sbcp-bar-min-width);

@@ -509,6 +509,11 @@ export function normalizeTrendConfig(entityConfig, cardConfig) {
     decimals: source.decimals ?? inherited.decimals ?? 1,
     deadband: source.deadband ?? inherited.deadband ?? 0.5,
     position: source.position ?? inherited.position ?? 'after_name',
+    up_color: source.up_color ?? inherited.up_color ?? '#2196f3',
+    stable_color: source.stable_color ?? inherited.stable_color ?? '#757575',
+    down_color: source.down_color ?? inherited.down_color ?? '#f44336',
+    font_weight: source.font_weight ?? inherited.font_weight ?? 'normal',
+    font_style: source.font_style ?? inherited.font_style ?? 'normal',
   };
 }
 

@@ -1631,6 +1631,11 @@ trend
 | `trend.decimals` | `1` | `0–10` | Decimal places used for the delta. |
 | `trend.deadband` | `0.5` | non-negative number | Absolute delta considered stable and rendered with `→`. |
 | `trend.position` | `after_name` | `after_name` | Placement of the trend indicator. |
+| `trend.up_color` | `#2196f3` | CSS color | Color used for an upward trend. |
+| `trend.stable_color` | `#757575` | CSS color | Color used for a stable trend inside the deadband. |
+| `trend.down_color` | `#f44336` | CSS color | Color used for a downward trend. |
+| `trend.font_weight` | `normal` | `normal`, `bold` | Font weight of the trend indicator. |
+| `trend.font_style` | `normal` | `normal`, `italic` | Font style of the trend indicator. |
 
 Legacy flat options are listed separately in the Legacy Compatibility / Migration section. They remain supported, but new dashboards should prefer the structured paths above.
 
@@ -1646,6 +1651,11 @@ trend:
   decimals: 1
   deadband: 0.5
   position: after_name
+  up_color: "#2196f3"
+  stable_color: "#757575"
+  down_color: "#f44336"
+  font_weight: bold
+  font_style: italic
 entities:
   - entity: sensor.wohnzimmer_palme_bodenfeuchtigkeit
     name: Palme
@@ -1656,7 +1666,7 @@ entities:
       deadband: 1
 ```
 
-The displayed delta is `current value - oldest valid value within the lookback period`. A delta above the deadband uses `↑`, one below the negative deadband uses `↓`, and a delta inside the deadband uses `→`. The entity's displayed unit is reused for the delta.
+The displayed delta is `current value - oldest valid value within the lookback period`. A delta above the deadband uses `↑`, one below the negative deadband uses `↓`, and a delta inside the deadband uses `→`. The entity's displayed unit is reused for the delta. Colors and typography may be configured globally and overridden inside an entity's `trend` block.
 
 ## Top-Level Card Options
 
