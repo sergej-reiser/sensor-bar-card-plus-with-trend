@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert legacy Sensor Bar Card Plus Lovelace YAML to structured config."""
+"""Convert legacy Sensor Bar Card Plus with Trend Lovelace YAML to structured config."""
 
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ except ModuleNotFoundError as exc:  # pragma: no cover - startup guard
     raise
 
 
-SBCP_TYPE = "custom:sensor-bar-card-plus"
+SBCP_TYPE = "custom:sensor-bar-card-plus-with-trend"
 FLAT_KEYS = {
     "label_position",
     "label_width",
@@ -418,7 +418,7 @@ def collect_sbcp_stats(node: Any) -> tuple[int, int]:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Convert legacy Sensor Bar Card Plus YAML to structured config.")
+    parser = argparse.ArgumentParser(description="Convert legacy Sensor Bar Card Plus with Trend YAML to structured config.")
     parser.add_argument("input", nargs="?", help="Input YAML file. Reads stdin when omitted.")
     parser.add_argument("output_path", nargs="?", help="Optional output YAML file. Writes stdout when omitted.")
     parser.add_argument("-o", "--output", help="Output YAML file. Writes stdout when omitted.")
@@ -434,7 +434,7 @@ def main() -> int:
     structured = total - legacy
 
     if args.check:
-        print(f"Found {total} Sensor Bar Card Plus cards")
+        print(f"Found {total} Sensor Bar Card Plus with Trend cards")
         print(f"{structured} already structured")
         print(f"{legacy} legacy cards can be migrated")
         return 0

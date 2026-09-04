@@ -1,7 +1,7 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Solar Production
+# Sensor Bar Card Plus with Trend Recipe: Solar Production
 # ============================================================================
 #
 # This recipe demonstrates solar production monitoring with soft semantic
@@ -25,7 +25,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Solar Production
 
 entities:

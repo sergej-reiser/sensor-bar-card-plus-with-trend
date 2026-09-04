@@ -1,7 +1,7 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: AV Calibration
+# Sensor Bar Card Plus with Trend Recipe: AV Calibration
 # ============================================================================
 #
 # This recipe demonstrates baseline-centered telemetry for audio/video
@@ -28,7 +28,7 @@
 # ============================================================================
 
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: AV Calibration
 
 entities:

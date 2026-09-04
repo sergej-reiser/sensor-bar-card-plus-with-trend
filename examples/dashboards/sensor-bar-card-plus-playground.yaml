@@ -1,4 +1,4 @@
-title: Sensor Bar Card Plus Playground
+title: Sensor Bar Card Plus with Trend Playground
 views:
 - title: Playground
   path: sensor-bar-card-plus-playground
@@ -7,8 +7,8 @@ views:
   cards:
   - type: markdown
     content: |
-      # Sensor Bar Card Plus Playground
-      A self-contained Home Assistant demo for `custom:sensor-bar-card-plus`.
+      # Sensor Bar Card Plus with Trend Playground
+      A self-contained Home Assistant demo for `custom:sensor-bar-card-plus-with-trend`.
 
       This view is the clean showcase surface. All controls drive helper-backed template sensors, and every bar card still consumes normal `sensor.*` entities.
   - type: vertical-stack
@@ -95,7 +95,7 @@ views:
     content: |
       ## Animation Preview
       Enable `Wave drive helper`, choose whether it targets the current value, the target value, or the baseline value, and select `sine`, `triangle`, or `random` for continuous motion. `Random` uses the full helper range instead of the active min/max scale.
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Animated sensor preview
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -132,7 +132,7 @@ views:
       - entity: input_boolean.sbcp_above_target_enabled
         state: "on"
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Target on / Above-target color on
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -163,7 +163,7 @@ views:
       - entity: input_boolean.sbcp_above_target_enabled
         state: "off"
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Target on / Above-target color off
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -194,7 +194,7 @@ views:
       - entity: input_boolean.sbcp_above_target_enabled
         state: "on"
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Target off / Above-target color on
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -224,7 +224,7 @@ views:
       - entity: input_boolean.sbcp_above_target_enabled
         state: "off"
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Target off / Above-target color off
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -251,7 +251,7 @@ views:
     content: |
       ## Interactive Playground
       These cards respond directly to the active helper settings and are intended to be the main debugging and screenshot surface.
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     entity: sensor.sbcp_playground_sensor
     card_mod:
       style: |
@@ -272,7 +272,7 @@ views:
       - entity: input_select.sbcp_color_mode
         state: gradient
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: "Active fill style: gradient"
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -309,7 +309,7 @@ views:
       - entity: input_select.sbcp_color_mode
         state: severity
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: "Active fill style: bands"
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -345,7 +345,7 @@ views:
       - entity: input_select.sbcp_color_mode
         state: severity_gradient
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: "Active fill style: band_gradient"
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -381,7 +381,7 @@ views:
       - entity: input_select.sbcp_color_mode
         state: single
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: "Active fill style: solid"
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -416,7 +416,7 @@ views:
       - entity: input_select.sbcp_label_mode
         state: left
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: "Active label mode: left"
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -442,7 +442,7 @@ views:
       - entity: input_select.sbcp_label_mode
         state: above
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: "Active label mode: above"
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -467,7 +467,7 @@ views:
       - entity: input_select.sbcp_label_mode
         state: inside
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: "Active label mode: inside"
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -493,7 +493,7 @@ views:
       - entity: input_select.sbcp_label_mode
         state: "off"
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: "Active label mode: off"
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -529,7 +529,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "0"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 24px / Decimal 0
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -558,7 +558,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "1"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 24px / Decimal 1
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -587,7 +587,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "2"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 24px / Decimal 2
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -616,7 +616,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "0"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 38px / Decimal 0
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -645,7 +645,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "1"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 38px / Decimal 1
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -674,7 +674,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "2"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 38px / Decimal 2
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -703,7 +703,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "0"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 52px / Decimal 0
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -732,7 +732,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "1"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 52px / Decimal 1
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -761,7 +761,7 @@ views:
         - entity: sensor.sbcp_playground_decimal_precision
           state: "2"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Height 52px / Decimal 2
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -798,7 +798,7 @@ views:
         - entity: input_boolean.sbcp_show_peak
           state: "on"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Animated on / Target label on / Peak on
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -835,7 +835,7 @@ views:
         - entity: input_boolean.sbcp_show_peak
           state: "off"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Animated on / Target label on / Peak off
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -872,7 +872,7 @@ views:
         - entity: input_boolean.sbcp_show_peak
           state: "on"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Animated on / Target label off / Peak on
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -909,7 +909,7 @@ views:
         - entity: input_boolean.sbcp_show_peak
           state: "off"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Animated on / Target label off / Peak off
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -946,7 +946,7 @@ views:
         - entity: input_boolean.sbcp_show_peak
           state: "on"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Animated off / Target label on / Peak on
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -983,7 +983,7 @@ views:
         - entity: input_boolean.sbcp_show_peak
           state: "off"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Animated off / Target label on / Peak off
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -1020,7 +1020,7 @@ views:
         - entity: input_boolean.sbcp_show_peak
           state: "on"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Animated off / Target label off / Peak on
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -1057,7 +1057,7 @@ views:
         - entity: input_boolean.sbcp_show_peak
           state: "off"
         card:
-          type: custom:sensor-bar-card-plus
+          type: custom:sensor-bar-card-plus-with-trend
           title: Animated off / Target label off / Peak off
           entities:
           - entity: sensor.sbcp_playground_sensor
@@ -1089,7 +1089,7 @@ views:
     content: |
       ## Color Modes
       Dedicated wide cards for `gradient`, `bands`, and `solid` rendering.
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Gradient
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -1121,7 +1121,7 @@ views:
       - pos: 100
         color: '#dc2626'
       fill_style: gradient
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Bands
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -1155,7 +1155,7 @@ views:
         to: 100%
         color: '#ef4444'
       fill_style: bands
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Solid Color
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -1185,7 +1185,7 @@ views:
       Compare the normal theoretical fill against `solid_fill: true`, which samples the current color and renders the revealed area as one solid fill.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Bands
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1215,7 +1215,7 @@ views:
           to: 100%
           color: '#ef4444'
         fill_style: bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Bands + solid_fill
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1246,7 +1246,7 @@ views:
           color: '#ef4444'
         fill_style: bands
         solid_fill: true
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Soft Bands
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1276,7 +1276,7 @@ views:
           to: 100%
           color: '#ef4444'
         fill_style: soft_bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Soft Bands + solid_fill
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1307,7 +1307,7 @@ views:
           color: '#ef4444'
         fill_style: soft_bands
         solid_fill: true
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Band Gradient
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1343,7 +1343,7 @@ views:
           to: 100%
           color: '#ef4444'
         fill_style: band_gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Band Gradient + solid_fill
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1386,7 +1386,7 @@ views:
       Small showcase only. Use the dedicated `Needle` view for the full marker, height, fill-style, and label-position test matrix.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Needle + Soft Bands
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1412,7 +1412,7 @@ views:
         - from: 85%
           to: 100%
           color: '#ef4444'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Needle + Band Gradient
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1439,7 +1439,7 @@ views:
         - from: 85%
           to: 100%
           color: '#ef4444'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Needle + solid_fill
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1466,7 +1466,7 @@ views:
         - from: 85%
           to: 100%
           color: '#ef4444'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Needle + Target
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1493,7 +1493,7 @@ views:
     columns: 2
     square: false
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Tight time unit - seconds
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1512,7 +1512,7 @@ views:
       bar:
         color: '#2563eb'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Tight time unit - hours
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1534,7 +1534,7 @@ views:
       bar:
         color: '#0f766e'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Custom text state
       entities:
       - entity: sensor.sbcp_playground_text_state
@@ -1546,7 +1546,7 @@ views:
       bar:
         color: '#9333ea'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Unknown and unavailable
       entities:
       - entity: sensor.sbcp_playground_unknown
@@ -1563,7 +1563,7 @@ views:
       The clean showcase variants for left, above, inside, off, long-label, and no-icon rendering.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Left Labels
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1578,7 +1578,7 @@ views:
           entity: sensor.sbcp_playground_target
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Above Labels
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1596,7 +1596,7 @@ views:
           entity: sensor.sbcp_playground_target
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Inside Labels
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1615,7 +1615,7 @@ views:
           entity: sensor.sbcp_playground_target
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Labels Off
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1632,7 +1632,7 @@ views:
           entity: sensor.sbcp_playground_target
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Hero Labels
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1650,7 +1650,7 @@ views:
           entity: sensor.sbcp_playground_target
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Long Labels
       entities:
       - entity: sensor.sbcp_playground_long_label
@@ -1666,7 +1666,7 @@ views:
       bar:
         color: '#2563eb'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Missing Icons
       entities:
       - entity: sensor.sbcp_playground_no_icon
@@ -1686,7 +1686,7 @@ views:
     columns: 2
     square: false
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Long label left
       entities:
       - entity: sensor.sbcp_playground_long_label
@@ -1704,7 +1704,7 @@ views:
           entity: sensor.sbcp_playground_target
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Long label above
       entities:
       - entity: sensor.sbcp_playground_long_label
@@ -1721,7 +1721,7 @@ views:
           entity: sensor.sbcp_playground_target
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Long label inside
       entities:
       - entity: sensor.sbcp_playground_long_label
@@ -1745,7 +1745,7 @@ views:
       Dynamic `min_entity`, `max_entity`, and `target_entity` demonstrations using the live helper-backed sensors.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Dynamic max_entity
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1761,7 +1761,7 @@ views:
           entity: sensor.sbcp_playground_scale_max
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Dynamic min_entity and max_entity
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1787,7 +1787,7 @@ views:
           to: 100%
           color: '#ef4444'
         fill_style: bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Negative min scale
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -1808,7 +1808,7 @@ views:
           show: true
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Extremely large max scale
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1845,7 +1845,7 @@ views:
       Baseline fill should originate from the configured neutral point, support dynamic baseline sources, and coexist safely with existing target, peak, color, and layout features.
   - type: horizontal-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline at 0
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1865,7 +1865,7 @@ views:
       bar:
         color: '#0f766e'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline at center
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1887,7 +1887,7 @@ views:
         fill_style: solid
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline 0 with above / below
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -1913,7 +1913,7 @@ views:
       bar:
         color: '#2563eb'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Crossing baseline
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1932,7 +1932,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline at min
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1951,7 +1951,7 @@ views:
           fixed: -100
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline near max
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -1972,7 +1972,7 @@ views:
         fill_style: gradient
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: "Baseline colors: none"
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -1993,7 +1993,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: "Baseline colors: above only"
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -2016,7 +2016,7 @@ views:
           color: '#34d399'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: "Baseline colors: below only"
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -2039,7 +2039,7 @@ views:
           color: '#ef4444'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: "Baseline colors: both"
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -2066,7 +2066,7 @@ views:
         fill_style: gradient
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Dynamic baseline
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2086,7 +2086,7 @@ views:
           fixed: 10
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Missing baseline fallback
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2106,7 +2106,7 @@ views:
           fixed: 15
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + target
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2133,7 +2133,7 @@ views:
       bar:
         color: '#2563eb'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + target_entity
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2161,7 +2161,7 @@ views:
         fill_style: gradient
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + peak
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2183,7 +2183,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + above target color
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2209,7 +2209,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + animation off
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2231,7 +2231,7 @@ views:
         fill_style: gradient
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + solid
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -2254,7 +2254,7 @@ views:
       bar:
         color: '#2563eb'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + gradient
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -2276,7 +2276,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + bands
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -2311,7 +2311,7 @@ views:
           to: 100%
           color: '#06b6d4'
         fill_style: bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + band_gradient
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -2348,7 +2348,7 @@ views:
         fill_style: band_gradient
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + left labels
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -2369,7 +2369,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + above labels
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2387,7 +2387,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + inside labels
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2406,7 +2406,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + compact width
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2431,7 +2431,7 @@ views:
       Move the target helper to test marker movement, label clamping, and above-target coloring.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Dynamic target_entity
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2452,7 +2452,7 @@ views:
           show: true
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Peak / target overlap
       entities:
       - entity: sensor.sbcp_playground_target
@@ -2477,7 +2477,7 @@ views:
         color: '#7c3aed'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Long target label clamp
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2501,7 +2501,7 @@ views:
           show: true
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Above target color
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2532,7 +2532,7 @@ views:
       Increase the current value and then lower it again to confirm peak markers persist until a page reload.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Peak enabled
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2554,7 +2554,7 @@ views:
         color: '#7c3aed'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Peak plus target label
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -2627,7 +2627,7 @@ views:
   - type: markdown
     content: |
       ## Basic Positions
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle at Minimum
     entities:
     - entity: sensor.sbcp_playground_scale_min
@@ -2645,7 +2645,7 @@ views:
       color: '#2563eb'
       fill_style: solid
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle in the Middle
     entities:
     - entity: sensor.sbcp_playground_baseline
@@ -2663,7 +2663,7 @@ views:
       color: '#0f766e'
       fill_style: solid
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle at Maximum
     entities:
     - entity: sensor.sbcp_playground_scale_max
@@ -2681,7 +2681,7 @@ views:
       color: '#dc2626'
       fill_style: solid
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Below Minimum, Clamped Left
     entities:
     - entity: sensor.sbcp_playground_negative
@@ -2699,7 +2699,7 @@ views:
       color: '#7c3aed'
       fill_style: solid
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Above Maximum, Clamped Right
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2720,7 +2720,7 @@ views:
   - type: markdown
     content: |
       ## Fill Styles
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Solid
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2738,7 +2738,7 @@ views:
       color: '#2563eb'
       fill_style: solid
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Gradient
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2764,7 +2764,7 @@ views:
         color: '#f59e0b'
       - pos: 100
         color: '#dc2626'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Bands
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2794,7 +2794,7 @@ views:
       - from: 85%
         to: 100%
         color: '#ef4444'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Soft Bands
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2824,7 +2824,7 @@ views:
       - from: 85%
         to: 100%
         color: '#ef4444'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Band Gradient
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2860,7 +2860,7 @@ views:
       - from: 80%
         to: 100%
         color: '#ef4444'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + solid_fill
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2891,7 +2891,7 @@ views:
       - from: 85%
         to: 100%
         color: '#ef4444'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Dense Telemetry A
     entities:
     - entity: sensor.sbcp_stress_01
@@ -2935,7 +2935,7 @@ views:
   - type: markdown
     content: |
       ## Marker Interactions
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Target
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2958,7 +2958,7 @@ views:
       fill_style: solid
       color: '#2563eb'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -2978,7 +2978,7 @@ views:
       fill_style: solid
       color: '#0f766e'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Target + Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3003,7 +3003,7 @@ views:
       fill_style: solid
       color: '#7c3aed'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Exactly Equal to Target
     entities:
     - entity: sensor.sbcp_playground_target
@@ -3026,7 +3026,7 @@ views:
       fill_style: solid
       color: '#ea580c'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Exactly Equal to Peak
     entities:
     - entity: sensor.sbcp_playground_target
@@ -3046,7 +3046,7 @@ views:
       fill_style: solid
       color: '#2563eb'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Just Below Target
     entities:
     - entity: sensor.sbcp_playground_baseline
@@ -3069,7 +3069,7 @@ views:
       fill_style: solid
       color: '#dc2626'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Just Above Target
     entities:
     - entity: sensor.sbcp_playground_baseline
@@ -3092,7 +3092,7 @@ views:
       fill_style: solid
       color: '#ef4444'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Just Below Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3112,7 +3112,7 @@ views:
       fill_style: solid
       color: '#0f766e'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Just Above Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3132,7 +3132,7 @@ views:
       fill_style: solid
       color: '#2563eb'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Between Target and Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3160,7 +3160,7 @@ views:
   - type: markdown
     content: |
       ## Above-Target Color
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle + Above-Target Color
     entities:
     - entity: sensor.sbcp_playground_scale_max
@@ -3185,7 +3185,7 @@ views:
       fill_style: solid
       color: '#2563eb'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle Below Target With Overlay Configured
     entities:
     - entity: sensor.sbcp_playground_baseline
@@ -3213,7 +3213,7 @@ views:
   - type: markdown
     content: |
       ## Color Visibility
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: White Needle on White Fill
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3233,7 +3233,7 @@ views:
       needle:
         show: true
         color: '#ffffff'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Yellow Needle on White Fill
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3253,7 +3253,7 @@ views:
       needle:
         show: true
         color: '#ffff00'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Cyan Needle on Pale Fill
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3273,7 +3273,7 @@ views:
       needle:
         show: true
         color: '#00ffff'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Black Needle on Yellow Fill
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3293,7 +3293,7 @@ views:
       needle:
         show: true
         color: '#000000'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Magenta Needle on Cyan Fill
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3313,7 +3313,7 @@ views:
       needle:
         show: true
         color: '#ff00cc'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Black Needle on Near-Black Fill
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3333,7 +3333,7 @@ views:
       needle:
         show: true
         color: '#000000'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Greyscale Bands With Black Needle
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3368,7 +3368,7 @@ views:
   - type: markdown
     content: |
       ## Label Positions
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle with label_position left
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3389,7 +3389,7 @@ views:
       fill_style: solid
       color: '#2563eb'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle with label_position above
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3409,7 +3409,7 @@ views:
       fill_style: solid
       color: '#0f766e'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle with label_position inside
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3430,7 +3430,7 @@ views:
       fill_style: solid
       color: '#7c3aed'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Needle with label_position off
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3453,7 +3453,7 @@ views:
   - type: markdown
     content: |
       ## Inside Label Interactions
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Inside label + needle
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3470,7 +3470,7 @@ views:
       fill_style: solid
       color: '#2563eb'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Inside label + needle + target
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3492,7 +3492,7 @@ views:
       fill_style: solid
       color: '#0f766e'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Inside label + needle + peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3511,7 +3511,7 @@ views:
       fill_style: solid
       color: '#7c3aed'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Inside label + needle + target + peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3535,7 +3535,7 @@ views:
       fill_style: solid
       color: '#ea580c'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Inside label + needle at target
     entities:
     - entity: sensor.sbcp_playground_target
@@ -3560,7 +3560,7 @@ views:
   - type: markdown
     content: |
       ## Height And Density
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Normal Height Needle + Target + Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3585,7 +3585,7 @@ views:
       fill_style: solid
       color: '#7c3aed'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Height 24 Needle + Target + Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3611,7 +3611,7 @@ views:
       fill_style: solid
       color: '#2563eb'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Height 16 Needle + Target + Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3637,7 +3637,7 @@ views:
       fill_style: solid
       color: '#ea580c'
       needle: true
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Height 12 Configured Needle + Target + Peak
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -3665,7 +3665,7 @@ views:
       needle: true
   - type: horizontal-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: H24 A
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -3689,7 +3689,7 @@ views:
         fill_style: solid
         color: '#2563eb'
         needle: true
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: H24 B
       entities:
       - entity: sensor.sbcp_playground_target
@@ -3713,7 +3713,7 @@ views:
         fill_style: solid
         color: '#0f766e'
         needle: true
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: H24 C
       entities:
       - entity: sensor.sbcp_playground_baseline
@@ -3737,7 +3737,7 @@ views:
         fill_style: solid
         color: '#7c3aed'
         needle: true
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: H24 D
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -3763,7 +3763,7 @@ views:
         needle: true
   - type: horizontal-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: H16 A
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -3787,7 +3787,7 @@ views:
         fill_style: solid
         color: '#2563eb'
         needle: true
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: H16 B
       entities:
       - entity: sensor.sbcp_playground_target
@@ -3811,7 +3811,7 @@ views:
         fill_style: solid
         color: '#0f766e'
         needle: true
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: H16 C
       entities:
       - entity: sensor.sbcp_playground_baseline
@@ -3835,7 +3835,7 @@ views:
         fill_style: solid
         color: '#7c3aed'
         needle: true
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: H16 D
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -3947,7 +3947,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: very_small
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4002,7 +4002,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: irregular
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4059,7 +4059,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: even
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4112,7 +4112,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: full_width
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4161,7 +4161,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: very_small
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4218,7 +4218,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: irregular
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4278,7 +4278,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: even
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4335,7 +4335,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: full_width
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4383,7 +4383,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: very_small
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4440,7 +4440,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: irregular
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4500,7 +4500,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: even
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4557,7 +4557,7 @@ views:
       - entity: input_select.sbcp_baseline_interval_profile
         state: full_width
       card:
-        type: custom:sensor-bar-card-plus
+        type: custom:sensor-bar-card-plus-with-trend
         title: Animated semantic lab
         entities:
         - entity: sensor.sbcp_playground_sensor
@@ -4604,7 +4604,7 @@ views:
       Baseline at `10%`, `50%`, and `75%` of the configured scale, with mixed rows above and below the baseline.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline at 10% of range
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4625,7 +4625,7 @@ views:
           fixed: -90
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline at center
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4646,7 +4646,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline at 75% of range
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4667,7 +4667,7 @@ views:
           fixed: 70
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Dynamic baseline and fallback
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -4702,7 +4702,7 @@ views:
       Override colors should win when set. Inherited color systems should remain coherent when the fill starts from baseline instead of min.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: "Baseline colors: none"
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4723,7 +4723,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: "Baseline colors: above only"
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4746,7 +4746,7 @@ views:
           color: '#34d399'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: "Baseline colors: below only"
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4769,7 +4769,7 @@ views:
           color: '#ef4444'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: "Baseline colors: both"
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4794,7 +4794,7 @@ views:
           color: '#ef4444'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + solid
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4816,7 +4816,7 @@ views:
       bar:
         color: '#2563eb'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + gradient
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4837,7 +4837,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + bands
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4872,7 +4872,7 @@ views:
           to: 100%
           color: '#06b6d4'
         fill_style: bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + band_gradient
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4913,7 +4913,7 @@ views:
       Includes fixed targets below, on, and above the baseline, plus dynamic target movement and peak tracking on off-center baselines.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Target below baseline
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4942,7 +4942,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Target on baseline
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -4971,7 +4971,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Target above baseline
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5000,7 +5000,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Dynamic target_entity on helper-driven baseline
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -5028,7 +5028,7 @@ views:
           fixed: 70
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Peak and target overlap on helper-driven baseline
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -5059,7 +5059,7 @@ views:
           fixed: 70
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline plus peak rows
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5089,7 +5089,7 @@ views:
       Same baseline behavior under left, above, inside, and tighter left-label layouts.
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + left labels
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5110,7 +5110,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + above labels
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5130,7 +5130,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + inside labels
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5151,7 +5151,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + compact left width
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5172,7 +5172,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline + animation off
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -5215,7 +5215,7 @@ views:
       ### Hero Basics
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Single row baseline hero
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5233,7 +5233,7 @@ views:
         decimal: 1
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Multi-row hero stack
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5259,7 +5259,7 @@ views:
     columns: 3
     square: false
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Tight A
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5277,7 +5277,7 @@ views:
         decimal: 1
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Tight B
       entities:
       - entity: sensor.sbcp_hero_shot_home
@@ -5305,7 +5305,7 @@ views:
         - from: 75%
           to: 100%
           color: '#dc2626'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Tight C
       entities:
       - entity: sensor.sbcp_hero_shot_ev
@@ -5327,7 +5327,7 @@ views:
     columns: 4
     square: false
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: XS A
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5345,7 +5345,7 @@ views:
         decimal: 1
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: XS B
       entities:
       - entity: sensor.sbcp_hero_shot_home
@@ -5373,7 +5373,7 @@ views:
         - from: 75%
           to: 100%
           color: '#dc2626'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: XS C
       entities:
       - entity: sensor.sbcp_hero_shot_ev
@@ -5391,7 +5391,7 @@ views:
         decimal: 1
       bar:
         fill_style: soft_bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: XS D
       entities:
       - entity: sensor.sbcp_hero_shot_grid
@@ -5412,7 +5412,7 @@ views:
           fixed: 0
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Negative, zero, and small values
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5438,7 +5438,7 @@ views:
       bar:
         fill_style: solid
         color: '#4a9eff'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Larger hero values
       entities:
       - entity: sensor.sbcp_hero_shot_ev
@@ -5473,7 +5473,7 @@ views:
       ### Hero Heights
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Compact 24
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5491,7 +5491,7 @@ views:
         decimal: 1
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Default-ish 38
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5509,7 +5509,7 @@ views:
         decimal: 1
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Large 52
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5527,7 +5527,7 @@ views:
         decimal: 1
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Oversized 70
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5550,7 +5550,7 @@ views:
       ### Hero Fill Styles
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Solid
       entities:
       - entity: sensor.sbcp_hero_shot_home
@@ -5567,7 +5567,7 @@ views:
       bar:
         fill_style: solid
         color: '#4a9eff'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Gradient
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5590,7 +5590,7 @@ views:
           color: '#22c55e'
         - pos: 100
           color: '#fde047'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Bands with solid fill
       entities:
       - entity: sensor.sbcp_hero_shot_ev
@@ -5617,7 +5617,7 @@ views:
         - from: 70%
           to: 100%
           color: '#f97316'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Soft bands and band gradient
       entities:
       - entity: sensor.sbcp_hero_shot_ev
@@ -5652,7 +5652,7 @@ views:
       ### Hero Target And Peak
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Target marker and label
       entities:
       - entity: sensor.sbcp_hero_shot_ev
@@ -5678,7 +5678,7 @@ views:
         decimal: 1
       bar:
         fill_style: soft_bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Peak marker
       entities:
       - entity: sensor.sbcp_hero_shot_battery
@@ -5697,7 +5697,7 @@ views:
         color: '#e5e7eb'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Target and peak together
       entities:
       - entity: sensor.sbcp_hero_shot_home
@@ -5730,7 +5730,7 @@ views:
         - from: 75%
           to: 100%
           color: '#dc2626'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Above-target fill stress
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -5760,7 +5760,7 @@ views:
       ### Hero Baseline
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline centered
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5790,7 +5790,7 @@ views:
           color: '#e5e7eb'
         - pos: 100
           color: '#22c55e'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline with target
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5819,7 +5819,7 @@ views:
       bar:
         fill_style: solid
         color: '#94a3b8'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Positive baseline zone
       entities:
       - entity: sensor.sbcp_hero_shot_home
@@ -5842,7 +5842,7 @@ views:
           color: '#60a5fa'
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Negative baseline stress
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5870,7 +5870,7 @@ views:
       ### Hero Needle
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Needle with solid fill
       entities:
       - entity: sensor.sbcp_hero_shot_grid
@@ -5890,7 +5890,7 @@ views:
         needle:
           show: true
           color: '#ffffff'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Needle with gradient
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -5916,7 +5916,7 @@ views:
           color: '#22c55e'
         - pos: 100
           color: '#fde047'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Needle with soft bands, target, and peak
       entities:
       - entity: sensor.sbcp_hero_shot_ev
@@ -5951,7 +5951,7 @@ views:
         - from: 68%
           to: 100%
           color: '#ef4444'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Baseline suppresses needle check
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -5977,7 +5977,7 @@ views:
       ### Hero Overrides
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Hero default with per-entity label overrides
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -6004,7 +6004,7 @@ views:
           fixed: 100
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Non-hero default with entity hero override
       entities:
       - entity: sensor.sbcp_hero_shot_home
@@ -6046,7 +6046,7 @@ views:
       ### Hero Icons
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Automatic and explicit icons
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -6065,7 +6065,7 @@ views:
           fixed: 10
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Hidden icon
       entities:
       - entity: sensor.sbcp_playground_no_icon
@@ -6089,7 +6089,7 @@ views:
       ### Hero Formatting
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Units and decimals
       entities:
       - entity: sensor.sbcp_hero_shot_grid
@@ -6115,7 +6115,7 @@ views:
           fixed: 100
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: No unit and negative formatting
       entities:
       - entity: sensor.sbcp_showcase_phase
@@ -6145,7 +6145,7 @@ views:
       ### Hero Size Presets
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Small hero size
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -6168,7 +6168,7 @@ views:
           fixed: 100
       bar:
         fill_style: soft_bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Medium hero size
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -6191,7 +6191,7 @@ views:
           fixed: 100
       bar:
         fill_style: soft_bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Large hero size
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -6223,7 +6223,7 @@ views:
       columns: 3
       square: false
       cards:
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         title: Medium compact mixed units
         entities:
         - entity: sensor.sbcp_hero_shot_grid
@@ -6253,7 +6253,7 @@ views:
             fixed: 0
         bar:
           fill_style: gradient
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         title: Large compact power mix
         entities:
         - entity: sensor.sbcp_hero_shot_solar
@@ -6276,7 +6276,7 @@ views:
             fixed: 12
         bar:
           fill_style: soft_bands
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         title: Large compact signed values
         entities:
         - entity: sensor.sbcp_playground_negative
@@ -6319,7 +6319,7 @@ views:
   - type: markdown
     content: |
       ### Hero Compact / Stress Tests
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Long labels and tight stack
     entities:
     - entity: sensor.sbcp_playground_long_label
@@ -6347,7 +6347,7 @@ views:
     columns: 2
     square: false
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Narrow card A
       entities:
       - entity: sensor.sbcp_hero_shot_solar
@@ -6365,7 +6365,7 @@ views:
         decimal: 1
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Narrow card B
       entities:
       - entity: sensor.sbcp_hero_shot_home
@@ -6390,7 +6390,7 @@ views:
       ### Hero Text States
   - type: vertical-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Unknown and unavailable
       entities:
       - entity: sensor.sbcp_playground_unknown
@@ -6404,7 +6404,7 @@ views:
       bar:
         fill_style: solid
         color: '#64748b'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Non-numeric text state
       entities:
       - entity: sensor.sbcp_playground_text_state
@@ -6431,7 +6431,7 @@ views:
     columns: 2
     square: false
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Unavailable and unknown states
       entities:
       - entity: sensor.sbcp_playground_unavailable
@@ -6442,7 +6442,7 @@ views:
           width: 190
       bar:
         fill_style: bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Negative values
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -6462,7 +6462,7 @@ views:
           show: true
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Custom text state passthrough
       entities:
       - entity: sensor.sbcp_playground_text_state
@@ -6474,7 +6474,7 @@ views:
       bar:
         color: '#9333ea'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: target > max
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6496,7 +6496,7 @@ views:
       bar:
         color: '#0f766e'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: target < min
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6518,7 +6518,7 @@ views:
       bar:
         color: '#0f766e'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: min == max
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6541,7 +6541,7 @@ views:
           fixed: 50
       bar:
         fill_style: bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: baseline < min
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6560,7 +6560,7 @@ views:
           fixed: -40
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: baseline > max
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6579,7 +6579,7 @@ views:
           fixed: 140
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Non-numeric with baseline
       entities:
       - entity: sensor.sbcp_playground_text_state
@@ -6599,7 +6599,7 @@ views:
       bar:
         color: '#9333ea'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Value below min with baseline
       entities:
       - entity: sensor.sbcp_playground_negative
@@ -6618,7 +6618,7 @@ views:
           fixed: 50
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Value above max with baseline
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6643,7 +6643,7 @@ views:
       Controlled narrow-width checks for `horizontal-stack` and `grid` rendering.
   - type: horizontal-stack
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Narrow A
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6662,7 +6662,7 @@ views:
           show: true
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Narrow B
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6686,7 +6686,7 @@ views:
     columns: 2
     square: false
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Grid rendering A
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6705,7 +6705,7 @@ views:
           show: true
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Grid rendering B
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6716,7 +6716,7 @@ views:
       bar:
         color: '#0f766e'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Grid rendering C
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6732,7 +6732,7 @@ views:
       content: |
         ## Soft Bands Edge Cases
         Matching `bands`, `soft_bands`, and `band_gradient` cards for boundaries at the edges and around genuinely narrow center bands.
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Bands Narrow At 0%
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6754,7 +6754,7 @@ views:
         - from: 55%
           to: 100%
           color: '#22c55e'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Soft Bands Narrow At 0%
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6776,7 +6776,7 @@ views:
         - from: 55%
           to: 100%
           color: '#22c55e'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Band Gradient Narrow At 0%
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6798,7 +6798,7 @@ views:
         - from: 55%
           to: 100%
           color: '#22c55e'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Bands Narrow Center
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6823,7 +6823,7 @@ views:
         - from: 58%
           to: 100%
           color: '#2563eb'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Soft Bands Narrow Center
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6848,7 +6848,7 @@ views:
         - from: 58%
           to: 100%
           color: '#2563eb'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Band Gradient Narrow Center
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6873,7 +6873,7 @@ views:
         - from: 58%
           to: 100%
           color: '#2563eb'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Bands Consecutive Narrow Center
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6901,7 +6901,7 @@ views:
         - from: 46%
           to: 100%
           color: '#0ea5e9'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Soft Bands Consecutive Narrow Center
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6929,7 +6929,7 @@ views:
         - from: 46%
           to: 100%
           color: '#0ea5e9'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Band Gradient Consecutive Narrow Center
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6957,7 +6957,7 @@ views:
         - from: 46%
           to: 100%
           color: '#0ea5e9'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Bands Narrow At 100%
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -6979,7 +6979,7 @@ views:
         - from: 97%
           to: 100%
           color: '#ef4444'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Soft Bands Narrow At 100%
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -7001,7 +7001,7 @@ views:
         - from: 97%
           to: 100%
           color: '#ef4444'
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Band Gradient Narrow At 100%
       entities:
       - entity: sensor.sbcp_playground_sensor
@@ -7023,7 +7023,7 @@ views:
         - from: 97%
           to: 100%
           color: '#ef4444'
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Grid rendering D
     entities:
     - entity: sensor.sbcp_playground_sensor
@@ -7051,7 +7051,7 @@ views:
     content: |
       ## Stress Tests
       Dense multi-row and multi-card scenarios for rendering, screenshots, and regression checks.
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Multi-row stress card
     entities:
     - entity: sensor.sbcp_stress_01
@@ -7132,7 +7132,7 @@ views:
       enabled: true
     bar:
       fill_style: gradient
-  - type: custom:sensor-bar-card-plus
+  - type: custom:sensor-bar-card-plus-with-trend
     title: Baseline stress card
     entities:
     - entity: sensor.sbcp_playground_negative
@@ -7174,7 +7174,7 @@ views:
     columns: 2
     square: false
     cards:
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Stress Grid A
       entities:
       - entity: sensor.sbcp_stress_01
@@ -7186,7 +7186,7 @@ views:
           width: 140
       bar:
         fill_style: gradient
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Stress Grid B
       entities:
       - entity: sensor.sbcp_stress_02
@@ -7198,7 +7198,7 @@ views:
           width: 140
       bar:
         fill_style: bands
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Stress Grid C
       entities:
       - entity: sensor.sbcp_stress_03
@@ -7211,7 +7211,7 @@ views:
       bar:
         color: '#2563eb'
         fill_style: solid
-    - type: custom:sensor-bar-card-plus
+    - type: custom:sensor-bar-card-plus-with-trend
       title: Stress Grid D
       entities:
       - entity: sensor.sbcp_stress_04

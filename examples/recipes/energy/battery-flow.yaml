@@ -1,11 +1,11 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Battery Flow
+# Sensor Bar Card Plus with Trend Recipe: Battery Flow
 # ============================================================================
 #
 # This recipe demonstrates one of the strongest use cases for
-# Sensor Bar Card Plus: bidirectional battery power flow visualization.
+# Sensor Bar Card Plus with Trend: bidirectional battery power flow visualization.
 #
 # Positive values = charging
 # Negative values = discharging
@@ -25,7 +25,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Home Battery Flow
 
 entities:

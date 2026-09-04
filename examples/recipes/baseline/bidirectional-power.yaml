@@ -1,12 +1,12 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Bidirectional Power
+# Sensor Bar Card Plus with Trend Recipe: Bidirectional Power
 # ============================================================================
 #
 # This recipe demonstrates baseline-centered bidirectional power flows.
 #
-# Baseline rendering is one of the defining features of Sensor Bar Card Plus.
+# Baseline rendering is one of the defining features of Sensor Bar Card Plus with Trend.
 # It is especially useful for values that naturally move above and below a
 # neutral reference point.
 #
@@ -30,7 +30,7 @@
 # ============================================================================
 
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Bidirectional Power
 
 entities:

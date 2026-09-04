@@ -129,8 +129,8 @@ function createShadowRoot() {
 }
 
 function loadCardClass(options = {}) {
-  const sourcePath = path.resolve(__dirname, '../../src/sensor-bar-card-plus.js');
-  const distPath = path.resolve(__dirname, '../../dist/sensor-bar-card-plus.js');
+  const sourcePath = path.resolve(__dirname, '../../src/sensor-bar-card-plus-with-trend.js');
+  const distPath = path.resolve(__dirname, '../../dist/sensor-bar-card-plus-with-trend.js');
   const filePath = options.source === 'dist' ? distPath : sourcePath;
   const cacheKey = options.source === 'dist' ? 'dist' : 'src';
   let source = bundledSourceCache.get(cacheKey);
@@ -207,8 +207,8 @@ function loadCardClass(options = {}) {
     registry.set('ha-entity-picker', class extends sandbox.HTMLElement {});
   }
   return {
-    card: sandbox.customElements.get('sensor-bar-card-plus'),
-    editor: sandbox.customElements.get('sensor-bar-card-plus-editor'),
+    card: sandbox.customElements.get('sensor-bar-card-plus-with-trend'),
+    editor: sandbox.customElements.get('sensor-bar-card-plus-with-trend-editor'),
   };
 }
 

@@ -1,7 +1,7 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Needle Gauge Basics
+# Sensor Bar Card Plus with Trend Recipe: Needle Gauge Basics
 # ============================================================================
 #
 # This recipe demonstrates the most basic form of needle mode.
@@ -28,7 +28,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Needle Gauge Basics
 
 entities:

@@ -1,23 +1,23 @@
 
-![Sensor Bar Card Plus](images/branding/logo-300.png)
+![Sensor Bar Card Plus with Trend](images/branding/logo-300.png)
 
-# Sensor Bar Card Plus
+# Sensor Bar Card Plus with Trend
 
-[![HACS Default](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
-[![GitHub Release](https://img.shields.io/github/v/release/cdelaet/sensor-bar-card-plus)](https://github.com/cdelaet/sensor-bar-card-plus/releases)
-[![Validate](https://github.com/cdelaet/sensor-bar-card-plus/actions/workflows/validate.yml/badge.svg)](https://github.com/cdelaet/sensor-bar-card-plus/actions/workflows/validate.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/cdelaet/sensor-bar-card-plus/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/cdelaet/sensor-bar-card-plus?style=social)](https://github.com/cdelaet/sensor-bar-card-plus)
+[![HACS Custom](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+[![GitHub Release](https://img.shields.io/github/v/release/sergej-reiser/sensor-bar-card-plus-with-trend)](https://github.com/sergej-reiser/sensor-bar-card-plus-with-trend/releases)
+[![Validate](https://github.com/sergej-reiser/sensor-bar-card-plus-with-trend/actions/workflows/validate.yml/badge.svg)](https://github.com/sergej-reiser/sensor-bar-card-plus-with-trend/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/sergej-reiser/sensor-bar-card-plus-with-trend/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/sergej-reiser/sensor-bar-card-plus-with-trend?style=social)](https://github.com/sergej-reiser/sensor-bar-card-plus-with-trend)
 
-Sensor Bar Card Plus is a next-generation visualization card for Home Assistant, designed for dashboards where the visual context is just as dynamic as the data itself.
+Sensor Bar Card Plus with Trend is a next-generation visualization card for Home Assistant, designed for dashboards where the visual context is just as dynamic as the data itself.
 
 It supports classic reveal-fill bars, baseline-driven bidirectional flows, and full-scale needle gauges. Instead of relying on hardcoded scales and thresholds, the card can derive ranges, targets, baselines, and reference values directly from Home Assistant entities.
 
-Ideal for energy monitoring, batteries, power flows, temperatures, quotas, environmental sensors, gauges, and other numeric data, Sensor Bar Card Plus combines dynamic scales, semantic fills, segment-based coloring, target and peak markers, needle indicators, and responsive layouts into a single highly configurable card.
+Ideal for energy monitoring, batteries, power flows, temperatures, quotas, environmental sensors, gauges, and other numeric data, Sensor Bar Card Plus with Trend combines dynamic scales, semantic fills, segment-based coloring, target and peak markers, needle indicators, and responsive layouts into a single highly configurable card.
 
 Now you have no excuse not to build that pretty dashboard. Go forth and look cool. -Chris
 
-![Sensor Bar Card Plus showcase](images/hero-400.gif)
+![Sensor Bar Card Plus with Trend showcase](images/hero-400.gif)
 
 
 [![Buy me a coffee on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/chrisdelaet)
@@ -44,25 +44,25 @@ Now you have no excuse not to build that pretty dashboard. Go forth and look coo
 
 ### HACS (Recommended)
 
-Sensor Bar Card Plus is available directly through HACS.
+Sensor Bar Card Plus with Trend is available directly through HACS.
 
 1. Open **HACS** in Home Assistant.
-2. Search for **Sensor Bar Card Plus**.
+2. Search for **Sensor Bar Card Plus with Trend**.
 3. Select **Download**.
 4. Refresh your browser.
 
-![Installing Sensor Bar Card Plus from HACS](images/hacs-installation.png)
+![Installing Sensor Bar Card Plus with Trend from HACS](images/hacs-installation.png)
 
 ### Manual
 
 If you prefer not to use HACS, manual installation is also supported.
 
-1. Download `sensor-bar-card-plus.js` from the latest release.
+1. Download `sensor-bar-card-plus-with-trend.js` from the latest release.
 2. Copy it to `/config/www/`.
 3. Add the following resource under **Settings → Dashboards → Resources**:
 
 ```text
-URL: /local/sensor-bar-card-plus.js
+URL: /local/sensor-bar-card-plus-with-trend.js
 Type: JavaScript Module
 ```
 
@@ -72,7 +72,7 @@ Type: JavaScript Module
 ## Quick Start
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Caravan Power
 entities:
 - entity: sensor.caravan_power
@@ -86,7 +86,7 @@ scale:
 ![Basic example](images/bar-basic.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Caravan Power
 entities:
 - entity: sensor.caravan_power
@@ -109,7 +109,7 @@ You can also add the card through the Home Assistant card picker and configure i
 
 ## Visual Editor
 
-Sensor Bar Card Plus now includes an advanced Visual Editor for Home Assistant Lovelace. The editor is designed to generate normal SBCP YAML while keeping advanced manual configuration fully viable.
+Sensor Bar Card Plus with Trend now includes an advanced Visual Editor for Home Assistant Lovelace. The editor is designed to generate normal SBCP YAML while keeping advanced manual configuration fully viable.
 
 What the Visual Editor supports:
 
@@ -130,7 +130,7 @@ The editor can configure the same structured layout options used in YAML, includ
 Example structured config:
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Power
 scale:
   min:
@@ -156,7 +156,7 @@ The Visual Editor is feature-rich and extensively tested, but this is its first 
 
 ## Rendering Modes
 
-Sensor Bar Card Plus currently supports two primary rendering models:
+Sensor Bar Card Plus with Trend currently supports two primary rendering models:
 
 - reveal fill mode
 - needle mode
@@ -179,7 +179,7 @@ This mode works especially well for:
 ![Reveal fill showcase](images/bar-dense-telemetry.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Reveal Fill
 bar:
   fill_style: gradient
@@ -209,7 +209,7 @@ This is useful for visualizing:
 
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Baseline Flow
 bar:
   fill_style: band_gradient
@@ -242,7 +242,7 @@ This mode works especially well for:
 
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Needle Gauge
 bar:
   fill_style: soft_bands
@@ -283,9 +283,9 @@ Notes:
 
 Current `color_mode` compatibility names map directly to these fill styles.
 
-If no fill style is specified, Sensor Bar Card Plus defaults to `bands`. This preserves visual compatibility with the original Sensor Bar Card, ensuring that existing dashboards continue to render as expected. New dashboards are encouraged to specify `bar.fill_style` explicitly, but doing so is optional.
+If no fill style is specified, Sensor Bar Card Plus with Trend defaults to `bands`. This preserves visual compatibility with the original Sensor Bar Card, ensuring that existing dashboards continue to render as expected. New dashboards are encouraged to specify `bar.fill_style` explicitly, but doing so is optional.
 
-Sensor Bar Card Plus separates semantic fill composition from animated reveal geometry. That is what allows gradients, bands, above-target colors, markers, and animations to stay visually coherent while the bar updates.
+Sensor Bar Card Plus with Trend separates semantic fill composition from animated reveal geometry. That is what allows gradients, bands, above-target colors, markers, and animations to stay visually coherent while the bar updates.
 
 ### `gradient`
 
@@ -294,7 +294,7 @@ Sensor Bar Card Plus separates semantic fill composition from animated reveal ge
 ![Gradient fill style](images/example-gradient-small.gif)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Gradient Fill
 bar:
   fill_style: gradient
@@ -334,7 +334,7 @@ Compatibility name: `severity`
 ![Bands fill style](images/example-bands-small.gif)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Bands Fill
 layout:
   label:
@@ -394,7 +394,7 @@ It sits between the other segment-based styles:
 ![Soft Bands Fill](images/example-soft-bands-rainbow.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Soft Bands Fill
 bar:
   fill_style: soft_bands
@@ -448,7 +448,7 @@ This makes the mode feel intuitive while still respecting the configured severit
 ![Band Gradient Fill](images/example-band-gradient-small.gif)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Band Gradient Fill
 bar:
   fill_style: band_gradient
@@ -502,7 +502,7 @@ This is most useful with `bands`, `band_gradient`, and `gradient` when you want 
 
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Sampled Solid Fill
 bar:
   fill_style: bands
@@ -550,7 +550,7 @@ Use `percent` when segment boundaries should describe fixed positions across the
 This is the default and the best choice for simple progress-style bars.
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Percent Segments
 bar:
   fill_style: bands
@@ -582,7 +582,7 @@ Here, the yellow band always starts halfway across the bar, regardless of whethe
 Use `scale` when segment boundaries are meaningful real values.
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Scale Segments
 bar:
   fill_style: bands
@@ -627,7 +627,7 @@ Compatibility name: `single`
 ![Solid fill](images/example-solid.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Solid Fill
 bar:
   fill_style: solid
@@ -655,7 +655,7 @@ Supported values:
 ![Label modes](images/example-label-positions.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Left Labels
 layout:
   label:
@@ -746,7 +746,7 @@ Supported values are **12** through **112** pixels. Values outside this range ar
 ![Hero size comparison](images/hero-label-sizes.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Energy Flow
 layout:
   label:
@@ -807,7 +807,7 @@ When `layout.label.position: left` is used, all names share a fixed label column
 ![Label width](images/example-label-width.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Label Width
 layout:
   label:
@@ -844,7 +844,7 @@ Each row resolves its icon in this order:
 ![Icon control](images/example-icons.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Icon Control
 layout:
   label:
@@ -880,10 +880,10 @@ The target marker sits on the bottom edge of the bar. The peak marker sits on th
 
 ### Above-target color 
 
-Use `target.when_exceeded.fill_color` when you want the filled section beyond the target to stand out as a different semantic state. Sensor Bar Card Plus composes that semantic fill with the normal bar paint, then clips the result with the shared animated reveal front so the marker, target label, and color split stay visually coherent while the target changes.
+Use `target.when_exceeded.fill_color` when you want the filled section beyond the target to stand out as a different semantic state. Sensor Bar Card Plus with Trend composes that semantic fill with the normal bar paint, then clips the result with the shared animated reveal front so the marker, target label, and color split stay visually coherent while the target changes.
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Above Target Color
 bar:
   fill_style: gradient
@@ -931,7 +931,7 @@ Set `target.label.show: true` to render the numeric target below the marker. The
 ![Peak marker](images/example-peak.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Peak Marker
 layout:
   label:
@@ -954,7 +954,7 @@ entities:
 ![Target marker](images/example-target-colors-above.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Target Marker
 layout:
   label:
@@ -1017,7 +1017,7 @@ Advanced baseline behavior is grouped under `baseline:` so related options stay 
 ### Centered zero baseline
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Grid Flow
 bar:
   fill_style: gradient
@@ -1039,7 +1039,7 @@ entities:
 ![Baseline off-center](images/example-baseline-off-center.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Off-center baseline
 bar:
   fill_style: band_gradient
@@ -1072,7 +1072,7 @@ entities:
 
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Midpoint Baseline
 bar:
   fill_style: gradient
@@ -1097,7 +1097,7 @@ The base semantic scale still spans the full bar. Optional above and below color
 #### Above-baseline color only
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Battery Bias
 bar:
   fill_style: gradient
@@ -1119,7 +1119,7 @@ entities:
 #### Above and below baseline colors
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Bidirectional Override
 bar:
   fill_style: gradient
@@ -1147,7 +1147,7 @@ Targets stay on the same global scale, so threshold markers, `target.when_exceed
 ![Baseline target interaction](images/example-baseline-above-target-colors.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Target And Baseline Interaction
 bar:
   fill_style: band_gradient
@@ -1193,7 +1193,7 @@ Animated baseline rows keep the semantic color scale stable while the visible in
 If both an `entity` and a `fixed` value are set under `baseline.at`, the entity takes precedence. If that entity is unavailable or non-numeric, the `fixed` value is used as fallback.
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Dynamic baseline
 bar:
   fill_style: gradient
@@ -1230,7 +1230,7 @@ Why dynamic sources matter: the card can follow real Home Assistant entities for
 ### Dynamic `scale.min` and `scale.max`
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Dynamic min and max
 bar:
   fill_style: gradient
@@ -1253,7 +1253,7 @@ This makes the full bar scale adaptive. The current value stays the same entity,
 For a moving threshold, use `target.at.entity`. This is useful for projected limits, tariff boundaries, ramping goals, or automation-driven targets.
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Dynamic target
 bar:
   fill_style: gradient
@@ -1270,7 +1270,7 @@ entities:
 ### Percentage target
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Percentage target
 scale:
   min:
@@ -1303,7 +1303,7 @@ Use `formatting.decimal` to control how many decimal places are shown per row.
 ![Decimal places](images/example-decimals.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Decimal Places
 layout:
   label:
@@ -1336,7 +1336,7 @@ entities:
 By default the card displays the entity's unit of measurement. Use `formatting.unit` to override that when you want a shorter, normalized, or more readable display unit.
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 entities:
   - entity: sensor.solar_power
     name: Solar
@@ -1355,7 +1355,7 @@ Time units `h`, `m`, and `s` render tight, for example `43s` and `4h`, instead o
 ![Time formatting](images/example-time-units.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Tight Time Unit - Seconds
 bar:
   fill_style: solid
@@ -1379,7 +1379,7 @@ Non-numeric current states are handled as first-class display states rather than
 ![Text states](images/example-text-values.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Unknown And Unavailable
 bar:
   fill_style: bands
@@ -1419,7 +1419,7 @@ Use `layout.height` globally or per entity to make rows more compact or more pro
 ![Bar height variations](images/example-heights.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Bar Heights
 layout:
   label:
@@ -1456,7 +1456,7 @@ Every card-level option can be overridden per entity.
 ![Per-entity overrides](images/example-per-entity-overrides.png)
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Mixed Overrides
 layout:
   label:
@@ -1510,7 +1510,7 @@ entities:
 
 # Configuration Reference
 
-This appendix is the quick-reference guide for the currently supported Sensor Bar Card Plus configuration model. Structured syntax is preferred for new dashboards. Legacy flat syntax remains supported for backward compatibility.
+This appendix is the quick-reference guide for the currently supported Sensor Bar Card Plus with Trend configuration model. Structured syntax is preferred for new dashboards. Legacy flat syntax remains supported for backward compatibility.
 
 ## Configuration Tree
 
@@ -1639,7 +1639,7 @@ Legacy flat options are listed separately in the Legacy Compatibility / Migratio
 Trend settings may be defined once at card level and overridden per entity. The card fetches all enabled entities in one Home Assistant history request, caches the result for five minutes, ignores non-numeric states, and hides the indicator when no usable current or historical value exists.
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 trend:
   show: true
   hours: 24
@@ -1970,8 +1970,8 @@ Legacy syntax remains fully supported for backward compatibility.
 
 Install this card side by side, then update:
 
-- resource URL from the original file to `/local/sensor-bar-card-plus.js`
-- card type from `custom:sensor-bar-card` to `custom:sensor-bar-card-plus`
+- resource URL from the original file to `/local/sensor-bar-card-plus-with-trend.js`
+- card type from `custom:sensor-bar-card` to `custom:sensor-bar-card-plus-with-trend`
 
 ### Migrating From Legacy Flat YAML
 
@@ -2008,7 +2008,7 @@ You do not need to migrate existing dashboards immediately. For new dashboards, 
 Legacy:
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Legacy Example
 label_position: left
 label_width: 150
@@ -2032,7 +2032,7 @@ entities:
 Structured:
 
 ```yaml
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Structured Example
 layout:
   label:
@@ -2084,9 +2084,9 @@ python tools/convert-legacy-config.py dashboard.yaml dashboard-structured.yaml
 cat dashboard.yaml | python tools/convert-legacy-config.py > dashboard-structured.yaml
 ```
 
-The converter only rewrites Sensor Bar Card Plus cards. All other Lovelace cards, custom cards, `card_mod` configuration, and unrelated YAML are left unchanged.
+The converter only rewrites Sensor Bar Card Plus with Trend cards. All other Lovelace cards, custom cards, `card_mod` configuration, and unrelated YAML are left unchanged.
 
-It traverses dashboards recursively, so nested Sensor Bar Card Plus cards are converted even when they appear inside wrapper cards or more complex dashboard structures.
+It traverses dashboards recursively, so nested Sensor Bar Card Plus with Trend cards are converted even when they appear inside wrapper cards or more complex dashboard structures.
 
 The conversion is deterministic and follows the same migration rules used by the Heritage Dashboard examples.
 
@@ -2133,11 +2133,11 @@ npm run test:visual:update
 
 The visual regression suite covers baseline rendering, fill styles, target and peak markers, compact layouts, and clipping or rounded-edge regressions.
 
-## Home Assistant Tile Bar Gauge vs Sensor Bar Card Plus
+## Home Assistant Tile Bar Gauge vs Sensor Bar Card Plus with Trend
 
-Home Assistant’s native Tile Bar Gauge is excellent for simple, compact Tile dashboards. Sensor Bar Card Plus is designed for advanced standalone and multi-entity visualization.
+Home Assistant’s native Tile Bar Gauge is excellent for simple, compact Tile dashboards. Sensor Bar Card Plus with Trend is designed for advanced standalone and multi-entity visualization.
 
-| Capability | HA Tile Bar Gauge | Sensor Bar Card Plus |
+| Capability | HA Tile Bar Gauge | Sensor Bar Card Plus with Trend |
 |---|---:|---:|
 | Native Tile card feature | ✅ | Planned |
 | Standalone card | ❌ | ✅ |
@@ -2160,22 +2160,22 @@ Home Assistant’s native Tile Bar Gauge is excellent for simple, compact Tile d
 | Gradient and segment previews | ❌ | ✅ |
 | Entity row management | ❌ | ✅ |
 
-The native Tile Bar Gauge is the right choice when you want a lightweight built-in Tile feature. Sensor Bar Card Plus is the better fit when you need richer visualization, multiple entities, dynamic references, markers, gradients, per-entity overrides, and fine-grained dashboard control.
+The native Tile Bar Gauge is the right choice when you want a lightweight built-in Tile feature. Sensor Bar Card Plus with Trend is the better fit when you need richer visualization, multiple entities, dynamic references, markers, gradients, per-entity overrides, and fine-grained dashboard control.
 
 A Tile-oriented SBCP variant may be considered later, but the current card is intentionally optimized as a dedicated advanced visualization card.
 
 
 ## Project Origin
 
-Sensor Bar Card Plus was originally inspired by Sensor Bar Card by TommySharpNZ. The original project is here:
+Sensor Bar Card Plus with Trend was originally inspired by Sensor Bar Card by TommySharpNZ. The original project is here:
 
 <https://github.com/TommySharpNZ/sensor-bar-card>
 
 This project uses its own resource path and card type so both cards can coexist safely in the same Home Assistant installation:
 
 - original card type: `custom:sensor-bar-card`
-- this card type: `custom:sensor-bar-card-plus`
-- this resource path: `/local/sensor-bar-card-plus.js`
+- this card type: `custom:sensor-bar-card-plus-with-trend`
+- this resource path: `/local/sensor-bar-card-plus-with-trend.js`
 
 It is not a drop-in replacement for the original card.
 

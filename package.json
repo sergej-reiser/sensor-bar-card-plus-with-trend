@@ -1,7 +1,7 @@
 {
-  "name": "sensor-bar-card-plus",
+  "name": "sensor-bar-card-plus-with-trend",
   "version": "1.6.3",
-  "description": "[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)  [![GitHub release](https://img.shields.io/github/release/cdelaet/sensor-bar-card-plus.svg)](https://github.com/cdelaet/sensor-bar-card-plus/releases)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)",
+  "description": "Sensor Bar Card Plus with Trend with history-based per-entity trend indicators for Home Assistant",
   "main": "index.js",
   "directories": {
     "example": "examples"
@@ -15,16 +15,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cdelaet/sensor-bar-card-plus.git"
+    "url": "git+https://github.com/sergej-reiser/sensor-bar-card-plus-with-trend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/cdelaet/sensor-bar-card-plus/issues"
+    "url": "https://github.com/sergej-reiser/sensor-bar-card-plus-with-trend/issues"
   },
-  "homepage": "https://github.com/cdelaet/sensor-bar-card-plus#readme",
+  "homepage": "https://github.com/sergej-reiser/sensor-bar-card-plus-with-trend#readme",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "esbuild": "^0.28.1",

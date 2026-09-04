@@ -39,18 +39,18 @@ import { escapeHtml } from '../utils/dom.js';
 import { calculateTrend, indexHistoryResponse, TREND_CACHE_MS } from '../trend/history.js';
 
 /**
- * sensor-bar-card-plus - A polished, configurable sensor bar card for Home Assistant
+ * sensor-bar-card-plus-with-trend - A polished, configurable sensor bar card for Home Assistant
  *
  * Works great for: power, temperature, humidity, water flow, battery, CO2, and more.
  *
  * Installation:
  *   1. Copy this file to your HA config /www/ folder
- *   2. Add resource in Lovelace: /local/sensor-bar-card-plus.js (type: module)
+ *   2. Add resource in Lovelace: /local/sensor-bar-card-plus-with-trend.js (type: module)
  *   3. Restart or refresh browser
  *
  * ─── Global config options (all can be overridden per entity) ───────────────
  *
- *   type: custom:sensor-bar-card-plus
+ *   type: custom:sensor-bar-card-plus-with-trend
  *   title: My Sensors             # optional card title
  *   label_position: left          # left | above | inside | off
  *   color_mode: gradient          # gradient | severity | severity_gradient | single
@@ -112,7 +112,7 @@ import { calculateTrend, indexHistoryResponse, TREND_CACHE_MS } from '../trend/h
  * ─── Example configs ────────────────────────────────────────────────────────
  *
  *  Power monitoring:
- *   type: custom:sensor-bar-card-plus
+ *   type: custom:sensor-bar-card-plus-with-trend
  *   title: Power Usage
  *   color_mode: gradient
  *   entities:
@@ -122,7 +122,7 @@ import { calculateTrend, indexHistoryResponse, TREND_CACHE_MS } from '../trend/h
  *       max: 3000
  *
  *  Dynamic scaling from sensors:
- *   type: custom:sensor-bar-card-plus
+ *   type: custom:sensor-bar-card-plus-with-trend
  *   title: Grid Peak Monitoring
  *   entities:
  *     - entity: sensor.grid_projected_peak_power
@@ -133,7 +133,7 @@ import { calculateTrend, indexHistoryResponse, TREND_CACHE_MS } from '../trend/h
  *       above_target_color: '#FF66AA'
  *
  *  Temperature:
- *   type: custom:sensor-bar-card-plus
+ *   type: custom:sensor-bar-card-plus-with-trend
  *   title: Temperatures
  *   color_mode: severity
  *   severity:
@@ -154,7 +154,7 @@ import { calculateTrend, indexHistoryResponse, TREND_CACHE_MS } from '../trend/h
  *       max: 40
  *
  *  Humidity:
- *   type: custom:sensor-bar-card-plus
+ *   type: custom:sensor-bar-card-plus-with-trend
  *   title: Humidity
  *   color_mode: single
  *   color: '#4a9eff'
@@ -167,7 +167,7 @@ import { calculateTrend, indexHistoryResponse, TREND_CACHE_MS } from '../trend/h
 
 export class SensorBarCard extends HTMLElement {
   static getConfigElement() {
-    return document.createElement('sensor-bar-card-plus-editor');
+    return document.createElement('sensor-bar-card-plus-with-trend-editor');
   }
 
   constructor() {
@@ -238,10 +238,10 @@ export class SensorBarCard extends HTMLElement {
     this._lastDiagnosticsSignature = signature;
 
     diagnostics.warnings.forEach((diagnostic) => {
-      console.warn(`[sensor-bar-card-plus] ${diagnostic.message}`, diagnostic);
+      console.warn(`[sensor-bar-card-plus-with-trend] ${diagnostic.message}`, diagnostic);
     });
     diagnostics.errors.forEach((diagnostic) => {
-      console.warn(`[sensor-bar-card-plus] ${diagnostic.message}`, diagnostic);
+      console.warn(`[sensor-bar-card-plus-with-trend] ${diagnostic.message}`, diagnostic);
     });
   }
 
@@ -430,7 +430,7 @@ export class SensorBarCard extends HTMLElement {
       this._trendFetchedAt = Date.now();
       this._update();
     }).catch((error) => {
-      console.warn('[sensor-bar-card-plus] Unable to load trend history', error);
+      console.warn('[sensor-bar-card-plus-with-trend] Unable to load trend history', error);
     }).finally(() => {
       this._trendRequest = null;
     });

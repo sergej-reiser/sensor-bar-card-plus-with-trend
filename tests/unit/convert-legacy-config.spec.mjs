@@ -36,11 +36,11 @@ describe('legacy config converter', () => {
 views:
   - title: Test
     cards:
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         color_mode: single
         color: '#2563eb'
         entity: sensor.one
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         color_mode: gradient
         gradient_stops:
           - pos: 0
@@ -48,7 +48,7 @@ views:
           - pos: 100
             color: '#ef4444'
         entity: sensor.two
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         color_mode: severity
         severity:
           - from: 0
@@ -58,7 +58,7 @@ views:
             to: 100
             color: '#ef4444'
         entity: sensor.three
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         color_mode: severity_gradient
         severity:
           - from: 0
@@ -85,7 +85,7 @@ views:
 views:
   - title: Test
     cards:
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         color_mode: severity
         severity:
           - from: 0
@@ -111,7 +111,7 @@ views:
 views:
   - title: Test
     cards:
-      - type: custom:sensor-bar-card-plus
+      - type: custom:sensor-bar-card-plus-with-trend
         bar:
           fill_style: gradient
           color_mode: severity

@@ -1,7 +1,7 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Network Latency
+# Sensor Bar Card Plus with Trend Recipe: Network Latency
 # ============================================================================
 #
 # This recipe demonstrates compact network and infrastructure telemetry.
@@ -27,7 +27,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Network Telemetry
 
 entities:

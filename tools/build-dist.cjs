@@ -4,8 +4,8 @@ const { buildSync } = require('esbuild');
 const root = path.resolve(__dirname, '..');
 
 buildSync({
-  entryPoints: [path.join(root, 'src', 'sensor-bar-card-plus.js')],
-  outfile: path.join(root, 'dist', 'sensor-bar-card-plus.js'),
+  entryPoints: [path.join(root, 'src', 'sensor-bar-card-plus-with-trend.js')],
+  outfile: path.join(root, 'dist', 'sensor-bar-card-plus-with-trend.js'),
   bundle: true,
   format: 'iife',
   platform: 'browser',

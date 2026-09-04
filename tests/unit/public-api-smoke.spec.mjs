@@ -14,7 +14,7 @@ function sensor(state, attrs = {}) {
   };
 }
 
-describe('Sensor Bar Card Plus public API smoke', () => {
+describe('Sensor Bar Card Plus with Trend public API smoke', () => {
   it('renders a basic single-entity card config', () => {
     const card = createCard();
     card._hass.states['sensor.one'] = sensor(42);
@@ -285,7 +285,7 @@ describe('Sensor Bar Card Plus public API smoke', () => {
     };
 
     editor.setConfig({
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Before',
       custom_key: { preserved: true },
       entities: [{ entity: 'sensor.one' }],
