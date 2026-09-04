@@ -44,6 +44,18 @@ describe('history trends', () => {
     });
   });
 
+  it('indexes the entity-keyed response returned by Home Assistant', () => {
+    const response = {
+      'sensor.one': [{ state: '1', last_changed: '2026-09-04T00:00:00Z' }],
+      'sensor.two': [{ state: '2', last_changed: '2026-09-04T00:00:00Z' }],
+      'sensor.unrequested': [{ state: '3', last_changed: '2026-09-04T00:00:00Z' }],
+    };
+    expect(indexHistoryResponse(response, ['sensor.one', 'sensor.two'])).toEqual({
+      'sensor.one': response['sensor.one'],
+      'sensor.two': response['sensor.two'],
+    });
+  });
+
   it('normalizes overrides, batches enabled entities, and reuses the cache', async () => {
     const card = createCard();
     const calls = [];
@@ -59,7 +71,7 @@ describe('history trends', () => {
       states: {},
       callWS: async (message) => {
         calls.push(message);
-        return [[], []];
+        return { 'sensor.one': [], 'sensor.two': [] };
       },
     };
     card._update = () => {};

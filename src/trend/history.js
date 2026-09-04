@@ -35,11 +35,18 @@ export function calculateTrend(currentState, history, config, nowMs = Date.now()
 
 export function indexHistoryResponse(response, entityIds) {
   const indexed = {};
-  if (!Array.isArray(response)) return indexed;
-  response.forEach((states, index) => {
-    if (!Array.isArray(states)) return;
-    const entityId = states.find((state) => state?.entity_id)?.entity_id ?? entityIds[index];
-    if (entityId) indexed[entityId] = states;
-  });
+  if (response && typeof response === 'object' && !Array.isArray(response)) {
+    for (const entityId of entityIds) {
+      if (Array.isArray(response[entityId])) indexed[entityId] = response[entityId];
+    }
+    return indexed;
+  }
+  if (Array.isArray(response)) {
+    response.forEach((states, index) => {
+      if (!Array.isArray(states)) return;
+      const entityId = states.find((state) => state?.entity_id)?.entity_id ?? entityIds[index];
+      if (entityId) indexed[entityId] = states;
+    });
+  }
   return indexed;
 }
