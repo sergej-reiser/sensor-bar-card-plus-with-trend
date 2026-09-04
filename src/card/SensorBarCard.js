@@ -447,7 +447,10 @@ export class SensorBarCard extends HTMLElement {
       : 1;
     const magnitude = Math.abs(trend.delta).toFixed(decimals);
     const unit = entityCfg.formatting?.unit ?? stateObj?.attributes?.unit_of_measurement ?? '';
-    return `<span class="trend-indicator" aria-label="Change ${escapeHtml(trend.delta.toFixed(decimals))} ${escapeHtml(unit)}">${trend.arrow} ${escapeHtml(magnitude)}${unit ? ` ${escapeHtml(unit)}` : ''}</span>`;
+    const direction = trend.arrow === '↑' ? 'up' : trend.arrow === '↓' ? 'down' : 'stable';
+    const color = config[`${direction}_color`];
+    const style = `color:${color};font-weight:${config.font_weight};font-style:${config.font_style}`;
+    return `<span class="trend-indicator trend-${direction}" style="${escapeHtml(style)}" aria-label="Change ${escapeHtml(trend.delta.toFixed(decimals))} ${escapeHtml(unit)}">${trend.arrow} ${escapeHtml(magnitude)}${unit ? ` ${escapeHtml(unit)}` : ''}</span>`;
   }
 
   _formatNameMarkup(name, entityCfg, stateObj) {
@@ -1390,9 +1393,7 @@ _getAboveTargetLayerGeometry(targetPct = null) {
         .trend-indicator {
           display: inline;
           margin-left: 0.35em;
-          color: var(--secondary-text-color, #727272);
           font-variant-numeric: tabular-nums;
-          font-weight: 500;
         }
         .bar-wrap {
           flex: 1 1 var(--sbcp-bar-min-width);

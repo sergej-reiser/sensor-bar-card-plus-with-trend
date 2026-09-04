@@ -8,6 +8,18 @@ function normalize(rawConfig) {
 }
 
 describe('validateNormalizedConfig', () => {
+  it('warns about unsupported trend typography values', () => {
+    const diagnostics = validateNormalizedConfig(normalize({
+      trend: { show: true, font_weight: 'heavy', font_style: 'oblique' },
+      entities: [{ entity: 'sensor.one' }],
+    }));
+
+    expect(diagnostics.warnings).toEqual(expect.arrayContaining([
+      expect.objectContaining({ code: 'trend.invalid_font_weight', path: 'card.trend.font_weight' }),
+      expect.objectContaining({ code: 'trend.invalid_font_style', path: 'card.trend.font_style' }),
+    ]));
+  });
+
   it('returns no warnings or errors for a valid config', () => {
     const diagnostics = validateNormalizedConfig(normalize({
       entities: [{ entity: 'sensor.one' }],

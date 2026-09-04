@@ -102,7 +102,44 @@ describe('history trends', () => {
       'sensor.moisture': [{ state: '64.2', last_changed: new Date(Date.now() - 23 * 60 * 60 * 1000).toISOString() }],
     };
     expect(card._formatNameMarkup('Palme', config.entities[0], state))
-      .toContain('<span class="entity-name">Palme</span><span class="trend-indicator"');
+      .toContain('<span class="entity-name">Palme</span><span class="trend-indicator trend-down"');
     expect(card._formatNameMarkup('Palme', config.entities[0], state)).toContain('↓ 2.8 %');
+  });
+
+  it('applies direction colors and typography with per-entity overrides', () => {
+    const card = createCard();
+    const config = card.normalizeCardConfig({
+      trend: {
+        show: true,
+        up_color: 'dodgerblue',
+        stable_color: '#888888',
+        down_color: 'crimson',
+        font_weight: 'bold',
+        font_style: 'italic',
+      },
+      entities: [{ entity: 'sensor.moisture', trend: { down_color: '#b00020' } }],
+    });
+    const entity = config.entities[0];
+    const state = { state: '8', attributes: { unit_of_measurement: '%' } };
+    card._trendHistory = {
+      'sensor.moisture': [{ state: '10', last_changed: new Date(Date.now() - 60 * 60 * 1000).toISOString() }],
+    };
+
+    expect(entity.trend).toMatchObject({
+      up_color: 'dodgerblue',
+      stable_color: '#888888',
+      down_color: '#b00020',
+      font_weight: 'bold',
+      font_style: 'italic',
+    });
+    expect(card._formatTrendMarkup(entity, state)).toContain(
+      'class="trend-indicator trend-down" style="color:#b00020;font-weight:bold;font-style:italic"'
+    );
+    expect(card._formatTrendMarkup(entity, { ...state, state: '12' })).toContain(
+      'class="trend-indicator trend-up" style="color:dodgerblue;font-weight:bold;font-style:italic"'
+    );
+    expect(card._formatTrendMarkup(entity, { ...state, state: '10.2' })).toContain(
+      'class="trend-indicator trend-stable" style="color:#888888;font-weight:bold;font-style:italic"'
+    );
   });
 });
