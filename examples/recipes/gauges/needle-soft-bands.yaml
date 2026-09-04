@@ -1,7 +1,7 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Needle Soft Bands
+# Sensor Bar Card Plus with Trend Recipe: Needle Soft Bands
 # ============================================================================
 #
 # This recipe demonstrates needle mode with soft semantic bands.
@@ -26,7 +26,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Needle Soft Bands
 
 entities:

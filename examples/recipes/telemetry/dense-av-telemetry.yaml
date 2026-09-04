@@ -1,5 +1,5 @@
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Dense AV Telemetry
+# Sensor Bar Card Plus with Trend Recipe: Dense AV Telemetry
 # ============================================================================
 #
 # This recipe demonstrates dense telemetry layouts using baseline-centered
@@ -24,7 +24,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Dense AV Telemetry
 
 entities:

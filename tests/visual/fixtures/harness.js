@@ -10,7 +10,7 @@ window.__sbcpRenderCard = async function renderCard(options) {
   mount.style.width = `${options.width || 720}px`;
   mount.innerHTML = '';
 
-  const card = document.createElement('sensor-bar-card-plus');
+  const card = document.createElement('sensor-bar-card-plus-with-trend');
   card.setConfig(options.config);
   card.hass = {
     states: options.states,

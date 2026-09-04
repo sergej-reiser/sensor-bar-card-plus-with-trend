@@ -1,4 +1,4 @@
-title: Sensor Bar Card Plus Heritage
+title: Sensor Bar Card Plus with Trend Heritage
 views:
   - title: Heritage
     path: heritage
@@ -14,7 +14,7 @@ views:
             content: |
               Legacy flat YAML examples. Each card should match the corresponding structured card in the next section.
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Basic Solid Color
             color_mode: single
             color: '#2563eb'
@@ -26,7 +26,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Bands
             color_mode: severity
             severity:
@@ -43,7 +43,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Band Gradient
             color_mode: severity_gradient
             severity:
@@ -60,7 +60,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Custom Gradient
             color_mode: gradient
             gradient_stops:
@@ -79,7 +79,7 @@ views:
               ### fill_style parity
               These cards use the existing color_mode compatibility syntax.
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy Compatibility - single
             bar:
               color_mode: single
@@ -97,7 +97,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Same sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy Compatibility - gradient
             bar:
               color_mode: gradient
@@ -121,7 +121,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Same sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy Compatibility - severity
             bar:
               color_mode: severity
@@ -148,7 +148,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Same sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy Compatibility - severity_gradient
             bar:
               color_mode: severity_gradient
@@ -175,7 +175,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Same sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Target Marker And Label
             color_mode: single
             color: '#2563eb'
@@ -187,7 +187,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Dynamic Min Max Target
             color_mode: gradient
             gradient_stops:
@@ -204,7 +204,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Peak Marker
             color_mode: gradient
             gradient_stops:
@@ -220,7 +220,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Baseline
             color_mode: gradient
             gradient_stops:
@@ -239,7 +239,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Positive flow
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Baseline Above Below Colors
             color_mode: gradient
             gradient_stops:
@@ -261,7 +261,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Positive flow
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Formatting
             color_mode: single
             color: '#2563eb'
@@ -271,7 +271,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Legacy - Per-Entity Overrides
             color_mode: severity
             min: 0
@@ -303,7 +303,7 @@ views:
             content: |
               Structured configuration examples. Each card should match the corresponding legacy card in the previous section.
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Basic Solid Color
             bar:
               fill_style: solid
@@ -321,7 +321,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Bands
             bar:
               fill_style: bands
@@ -339,7 +339,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Band Gradient
             bar:
               fill_style: band_gradient
@@ -357,7 +357,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Custom Gradient
             bar:
               fill_style: gradient
@@ -377,7 +377,7 @@ views:
               ### fill_style parity
               These cards use the new fill_style syntax.
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured fill_style - solid
             bar:
               fill_style: solid
@@ -395,7 +395,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Same sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured fill_style - gradient
             bar:
               fill_style: gradient
@@ -419,7 +419,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Same sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured fill_style - bands
             bar:
               fill_style: bands
@@ -446,7 +446,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Same sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured fill_style - band_gradient
             bar:
               fill_style: band_gradient
@@ -473,7 +473,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Same sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Target Marker And Label
             bar:
               fill_style: solid
@@ -490,7 +490,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Dynamic Min Max Target
             bar:
               fill_style: gradient
@@ -513,7 +513,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Peak Marker
             bar:
               fill_style: gradient
@@ -531,7 +531,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Baseline
             bar:
               fill_style: gradient
@@ -556,7 +556,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Positive flow
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Baseline Above Below Colors
             bar:
               fill_style: gradient
@@ -585,7 +585,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Positive flow
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Formatting
             bar:
               fill_style: solid
@@ -597,7 +597,7 @@ views:
               - entity: sensor.sbcp_playground_sensor
                 name: Sensor
 
-          - type: custom:sensor-bar-card-plus
+          - type: custom:sensor-bar-card-plus-with-trend
             title: Structured - Per-Entity Overrides
             bar:
               fill_style: bands

@@ -1,6 +1,6 @@
 {
-  "name": "Sensor Bar Card Plus",
-  "filename": "sensor-bar-card-plus.js",
+  "name": "Sensor Bar Card Plus with Trend",
+  "filename": "sensor-bar-card-plus-with-trend.js",
   "hide_default_branch": true,
   "render_readme": true
 }

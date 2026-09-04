@@ -1,7 +1,7 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Grid Import / Export
+# Sensor Bar Card Plus with Trend Recipe: Grid Import / Export
 # ============================================================================
 #
 # This recipe demonstrates baseline-centered import/export flows.
@@ -9,7 +9,7 @@
 # Positive values = importing from the grid
 # Negative values = exporting to the grid
 #
-# Sensor Bar Card Plus is particularly strong at visualizing
+# Sensor Bar Card Plus with Trend is particularly strong at visualizing
 # bidirectional energy flows using baseline rendering.
 #
 # Replace the demo entities below with your own Home Assistant sensors.
@@ -27,7 +27,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Grid Import / Export
 
 entities:

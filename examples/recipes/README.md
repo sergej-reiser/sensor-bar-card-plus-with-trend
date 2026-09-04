@@ -1,8 +1,8 @@
 
 
-# Sensor Bar Card Plus Recipes
+# Sensor Bar Card Plus with Trend Recipes
 
-These recipes demonstrate practical real-world use cases for Sensor Bar Card Plus.
+These recipes demonstrate practical real-world use cases for Sensor Bar Card Plus with Trend.
 
 Unlike the playground and showcase dashboards, the recipe collection focuses on reusable dashboard patterns that can be copied and adapted for your own Home Assistant setup.
 
@@ -71,7 +71,7 @@ Bidirectional telemetry and centered-flow visualization.
 
 # Choosing The Right Rendering Mode
 
-Sensor Bar Card Plus currently supports three major visualization models.
+Sensor Bar Card Plus with Trend currently supports three major visualization models.
 
 ## Reveal Fill
 

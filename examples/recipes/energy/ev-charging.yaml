@@ -1,7 +1,7 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: EV Charging
+# Sensor Bar Card Plus with Trend Recipe: EV Charging
 # ============================================================================
 #
 # This recipe demonstrates EV charging telemetry with practical operating
@@ -26,7 +26,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: EV Charging
 
 entities:

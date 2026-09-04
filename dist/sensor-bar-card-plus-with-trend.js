@@ -1096,7 +1096,7 @@
       init_history();
       SensorBarCard = class extends HTMLElement {
         static getConfigElement() {
-          return document.createElement("sensor-bar-card-plus-editor");
+          return document.createElement("sensor-bar-card-plus-with-trend-editor");
         }
         constructor() {
           super();
@@ -1162,10 +1162,10 @@
           if (signature === this._lastDiagnosticsSignature) return;
           this._lastDiagnosticsSignature = signature;
           diagnostics.warnings.forEach((diagnostic) => {
-            console.warn(`[sensor-bar-card-plus] ${diagnostic.message}`, diagnostic);
+            console.warn(`[sensor-bar-card-plus-with-trend] ${diagnostic.message}`, diagnostic);
           });
           diagnostics.errors.forEach((diagnostic) => {
-            console.warn(`[sensor-bar-card-plus] ${diagnostic.message}`, diagnostic);
+            console.warn(`[sensor-bar-card-plus-with-trend] ${diagnostic.message}`, diagnostic);
           });
         }
         // The normalized model is internal only. It preserves today's flat YAML
@@ -1320,7 +1320,7 @@
             this._trendFetchedAt = Date.now();
             this._update();
           }).catch((error) => {
-            console.warn("[sensor-bar-card-plus] Unable to load trend history", error);
+            console.warn("[sensor-bar-card-plus-with-trend] Unable to load trend history", error);
           }).finally(() => {
             this._trendRequest = null;
           });
@@ -9793,20 +9793,20 @@ ${paintLayers}
     }
   });
 
-  // src/sensor-bar-card-plus.js
-  var require_sensor_bar_card_plus = __commonJS({
-    "src/sensor-bar-card-plus.js"() {
+  // src/sensor-bar-card-plus-with-trend.js
+  var require_sensor_bar_card_plus_with_trend = __commonJS({
+    "src/sensor-bar-card-plus-with-trend.js"() {
       init_SensorBarCard();
       init_SensorBarCardPlusEditor();
-      customElements.define("sensor-bar-card-plus", SensorBarCard);
-      customElements.define("sensor-bar-card-plus-editor", SensorBarCardPlusEditor);
+      customElements.define("sensor-bar-card-plus-with-trend", SensorBarCard);
+      customElements.define("sensor-bar-card-plus-with-trend-editor", SensorBarCardPlusEditor);
       window.customCards = window.customCards || [];
       window.customCards.push({
-        type: "sensor-bar-card-plus",
-        name: "Sensor Bar Card Plus",
-        description: "Animated, colour-coded horizontal bar card for Home Assistant with extended target and layout features."
+        type: "sensor-bar-card-plus-with-trend",
+        name: "Sensor Bar Card Plus with Trend",
+        description: "Animated, colour-coded horizontal bar card with history-based trend indicators."
       });
     }
   });
-  require_sensor_bar_card_plus();
+  require_sensor_bar_card_plus_with_trend();
 })();

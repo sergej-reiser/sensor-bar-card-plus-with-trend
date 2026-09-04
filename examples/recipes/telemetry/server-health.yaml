@@ -1,12 +1,12 @@
 
 
 # ============================================================================
-# Sensor Bar Card Plus Recipe: Server Health
+# Sensor Bar Card Plus with Trend Recipe: Server Health
 # ============================================================================
 #
 # This recipe demonstrates compact server and infrastructure monitoring.
 #
-# Sensor Bar Card Plus works especially well for dense telemetry dashboards
+# Sensor Bar Card Plus with Trend works especially well for dense telemetry dashboards
 # where multiple operational metrics need to be visible simultaneously.
 #
 # Replace the demo entities below with your own Home Assistant sensors.
@@ -27,7 +27,7 @@
 #
 # ============================================================================
 
-type: custom:sensor-bar-card-plus
+type: custom:sensor-bar-card-plus-with-trend
 title: Server Health
 
 entities:

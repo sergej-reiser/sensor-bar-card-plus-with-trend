@@ -56,7 +56,7 @@ const scenarios = [
   {
     name: 'normal-no-baseline',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Normal no baseline',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -71,7 +71,7 @@ const scenarios = [
   {
     name: 'full-width-fill',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Full width fill',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -86,7 +86,7 @@ const scenarios = [
   {
     name: 'baseline-below-value',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Baseline below value',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -102,7 +102,7 @@ const scenarios = [
   {
     name: 'baseline-above-value',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Baseline above value',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -118,7 +118,7 @@ const scenarios = [
   {
     name: 'off-center-baseline',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Off-center baseline',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -137,7 +137,7 @@ const scenarios = [
   {
     name: 'dynamic-baseline-fallback',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Dynamic baseline fallback',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -168,7 +168,7 @@ const scenarios = [
   {
     name: 'above-baseline-color',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Above baseline color',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -190,7 +190,7 @@ const scenarios = [
   {
     name: 'below-baseline-color',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Below baseline color',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -212,7 +212,7 @@ const scenarios = [
   {
     name: 'both-baseline-colors',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Both baseline colors',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -235,7 +235,7 @@ const scenarios = [
   {
     name: 'severity-left-edge',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Severity left edge',
       color_mode: 'severity',
       severity,
@@ -251,7 +251,7 @@ const scenarios = [
   {
     name: 'gradient-right-edge',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Gradient right edge',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -267,7 +267,7 @@ const scenarios = [
   {
     name: 'override-left-edge',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Override left edge',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -286,7 +286,7 @@ const scenarios = [
   {
     name: 'override-right-edge',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Override right edge',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -305,7 +305,7 @@ const scenarios = [
   {
     name: 'baseline-target',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Baseline target',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -325,7 +325,7 @@ const scenarios = [
   {
     name: 'normal-above-target',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Normal above target',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -344,7 +344,7 @@ const scenarios = [
   {
     name: 'baseline-peak',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Baseline peak',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -362,7 +362,7 @@ const scenarios = [
   {
     name: 'severity',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Severity',
       color_mode: 'severity',
       severity,
@@ -381,7 +381,7 @@ const scenarios = [
   {
     name: 'severity-gradient',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Severity gradient',
       color_mode: 'severity_gradient',
       severity,
@@ -400,7 +400,7 @@ const scenarios = [
   {
     name: 'gradient',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Gradient',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -419,7 +419,7 @@ const scenarios = [
   {
     name: 'single',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Single',
       color_mode: 'single',
       color: '#2563eb',
@@ -438,7 +438,7 @@ const scenarios = [
   {
     name: 'left-labels',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Left labels',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -457,7 +457,7 @@ const scenarios = [
   {
     name: 'above-labels',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Above labels',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -472,7 +472,7 @@ const scenarios = [
   {
     name: 'inside-labels',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Inside labels',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -488,7 +488,7 @@ const scenarios = [
   {
     name: 'hero-labels',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Hero labels',
       bar: {
         fill_style: 'gradient',
@@ -515,7 +515,7 @@ const scenarios = [
     name: 'hero-labels-narrow',
     width: 320,
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Hero labels narrow',
       bar: {
         fill_style: 'gradient',
@@ -543,7 +543,7 @@ const scenarios = [
     name: 'hero-labels-small-height',
     width: 320,
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Hero labels small height',
       bar: {
         fill_style: 'gradient',
@@ -570,7 +570,7 @@ const scenarios = [
     name: 'compact-narrow',
     width: 320,
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Compact narrow',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -586,7 +586,7 @@ const scenarios = [
   {
     name: 'very-small-interval',
     config: {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Very small interval',
       color_mode: 'severity_gradient',
       severity,
@@ -614,7 +614,7 @@ for (const scenario of scenarios) {
 
 test('visual regression: baseline-severity-mid-transition', async ({ page }) => {
   const config = {
-    type: 'custom:sensor-bar-card-plus',
+    type: 'custom:sensor-bar-card-plus-with-trend',
     title: 'Baseline severity transition',
     color_mode: 'severity',
     severity,
@@ -635,7 +635,7 @@ test('visual regression: baseline-severity-mid-transition', async ({ page }) => 
   });
 
   await page.evaluate(async () => {
-    const card = document.querySelector('sensor-bar-card-plus');
+    const card = document.querySelector('sensor-bar-card-plus-with-trend');
     card.hass = {
       states: {
         'sensor.transitioning': window.__sbcpCreateState(95, {
@@ -653,7 +653,7 @@ test('visual regression: baseline-severity-mid-transition', async ({ page }) => 
 
 test('visual regression: normal-above-target-mid-transition-downward', async ({ page }) => {
   const config = {
-    type: 'custom:sensor-bar-card-plus',
+    type: 'custom:sensor-bar-card-plus-with-trend',
     title: 'Normal above target transition',
     color_mode: 'gradient',
     gradient_stops: gradientStops,
@@ -677,7 +677,7 @@ test('visual regression: normal-above-target-mid-transition-downward', async ({ 
   });
 
   await page.evaluate(async () => {
-    const card = document.querySelector('sensor-bar-card-plus');
+    const card = document.querySelector('sensor-bar-card-plus-with-trend');
     card.hass = {
       states: {
         'sensor.transitioning': window.__sbcpCreateState(30, {
@@ -699,7 +699,7 @@ for (const [name, colorMode] of [
 ]) {
   test(`visual regression: ${name}`, async ({ page }) => {
     const config = {
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: name,
       color_mode: colorMode,
       gradient_stops: colorMode === 'gradient' ? gradientStops : undefined,
@@ -721,7 +721,7 @@ for (const [name, colorMode] of [
     });
 
     await page.evaluate(async () => {
-      const card = document.querySelector('sensor-bar-card-plus');
+      const card = document.querySelector('sensor-bar-card-plus-with-trend');
       card.hass = {
         states: {
           'sensor.transitioning': window.__sbcpCreateState(95, {
@@ -746,7 +746,7 @@ test('ha-card wrapper stays stable across config and hass updates', async ({ pag
       width: 720,
       states,
       config: {
-        type: 'custom:sensor-bar-card-plus',
+        type: 'custom:sensor-bar-card-plus-with-trend',
         title: 'Card mod stability',
         color_mode: 'gradient',
         gradient_stops: gradientStops,
@@ -768,7 +768,7 @@ test('ha-card wrapper stays stable across config and hass updates', async ({ pag
     const initialHaCard = card.shadowRoot.querySelector('ha-card');
 
     card.setConfig({
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       title: 'Card mod stability updated',
       color_mode: 'gradient',
       gradient_stops: gradientStops,
@@ -846,7 +846,7 @@ test('visual regression: above-label-responsive-stack', async ({ page }) => {
       </svg>`;
 
     const decorateHarnessIcons = () => {
-      document.querySelectorAll('sensor-bar-card-plus').forEach((card) => {
+      document.querySelectorAll('sensor-bar-card-plus-with-trend').forEach((card) => {
         card.shadowRoot?.querySelectorAll('ha-icon').forEach((icon) => {
           if (icon.dataset.sbcpVisualIcon === 'true') return;
           if (icon.getAttribute('icon') !== 'mdi:solar-power') return;
@@ -862,7 +862,7 @@ test('visual regression: above-label-responsive-stack', async ({ page }) => {
     };
 
     const makeCardConfig = (name) => ({
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       layout: {
         height: 40,
         label: {
@@ -915,7 +915,7 @@ test('visual regression: above-label-responsive-stack', async ({ page }) => {
       grid.style.gap = '12px';
 
       for (let index = 0; index < columns; index += 1) {
-        const card = document.createElement('sensor-bar-card-plus');
+        const card = document.createElement('sensor-bar-card-plus-with-trend');
         card.setConfig(makeCardConfig(name));
         card.hass = { states };
         grid.appendChild(card);
@@ -973,7 +973,7 @@ test('visual regression: inside-label-responsive-stack', async ({ page }) => {
       </svg>`;
 
     const decorateHarnessIcons = () => {
-      document.querySelectorAll('sensor-bar-card-plus').forEach((card) => {
+      document.querySelectorAll('sensor-bar-card-plus-with-trend').forEach((card) => {
         card.shadowRoot?.querySelectorAll('ha-icon').forEach((icon) => {
           if (icon.dataset.sbcpVisualIcon === 'true') return;
           if (icon.getAttribute('icon') !== 'mdi:solar-power') return;
@@ -989,7 +989,7 @@ test('visual regression: inside-label-responsive-stack', async ({ page }) => {
     };
 
     const makeCardConfig = (name) => ({
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       layout: {
         height: 40,
         label: {
@@ -1042,7 +1042,7 @@ test('visual regression: inside-label-responsive-stack', async ({ page }) => {
       grid.style.gap = '12px';
 
       for (let index = 0; index < columns; index += 1) {
-        const card = document.createElement('sensor-bar-card-plus');
+        const card = document.createElement('sensor-bar-card-plus-with-trend');
         card.setConfig(makeCardConfig(name));
         card.hass = { states };
         grid.appendChild(card);

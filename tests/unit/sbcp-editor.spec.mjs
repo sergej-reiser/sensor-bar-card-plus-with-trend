@@ -80,7 +80,7 @@ function expectNoDeprecatedEditedKeys(target) {
   expect(target.peak_color).toBeUndefined();
 }
 
-describe('Sensor Bar Card Plus editor', () => {
+describe('Sensor Bar Card Plus with Trend editor', () => {
   it('exposes a Lovelace config editor element', () => {
     const CardClass = loadElementClass('card');
     const editor = CardClass.getConfigElement();
@@ -1716,7 +1716,7 @@ describe('Sensor Bar Card Plus editor', () => {
     const events = trackConfigEvents(editor);
 
     editor.setConfig({
-      type: 'custom:sensor-bar-card-plus',
+      type: 'custom:sensor-bar-card-plus-with-trend',
       entities: [{
         bar: { color: '#ff9800', needle: true },
         formatting: { decimal: 2, unit: 'W' },

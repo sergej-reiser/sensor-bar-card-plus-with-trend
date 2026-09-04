@@ -89,7 +89,7 @@ function createTrackedRow(elements, dataset = {}) {
   };
 }
 
-describe('Sensor Bar Card Plus logic', () => {
+describe('Sensor Bar Card Plus with Trend logic', () => {
   it('normalizes card defaults and single-entity shorthand', () => {
     const card = createCard();
     const cfg = card.normalizeCardConfig({

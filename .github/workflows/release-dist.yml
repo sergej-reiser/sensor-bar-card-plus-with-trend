@@ -33,12 +33,12 @@ jobs:
       
       - name: Verify dist is bundled
         run: |
-          test -f dist/sensor-bar-card-plus.js
-          ! grep -q "from './card/SensorBarCard.js'" dist/sensor-bar-card-plus.js
-          ! grep -q "from './editor/SensorBarCardPlusEditor.js'" dist/sensor-bar-card-plus.js
+          test -f dist/sensor-bar-card-plus-with-trend.js
+          ! grep -q "from './card/SensorBarCard.js'" dist/sensor-bar-card-plus-with-trend.js
+          ! grep -q "from './editor/SensorBarCardPlusEditor.js'" dist/sensor-bar-card-plus-with-trend.js
       
       - name: Upload release asset
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/sensor-bar-card-plus.js
+          files: dist/sensor-bar-card-plus-with-trend.js
