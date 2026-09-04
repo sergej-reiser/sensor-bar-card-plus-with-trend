@@ -457,6 +457,19 @@
       color: (_h = (_g = (_f = (_e = entityPeak == null ? void 0 : entityPeak.color) != null ? _e : entityConfig.peak_color) != null ? _f : cardPeak == null ? void 0 : cardPeak.color) != null ? _g : cardConfig == null ? void 0 : cardConfig.peak_color) != null ? _h : "#888"
     };
   }
+  function normalizeTrendConfig(entityConfig, cardConfig) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
+    const inherited = (_a = cardConfig == null ? void 0 : cardConfig.trend) != null ? _a : {};
+    const raw = entityConfig == null ? void 0 : entityConfig.trend;
+    const source = raw && typeof raw === "object" && !Array.isArray(raw) ? raw : {};
+    return {
+      show: (_c = source.show) != null ? _c : raw === false ? false : (_b = inherited.show) != null ? _b : false,
+      hours: (_e = (_d = source.hours) != null ? _d : inherited.hours) != null ? _e : 24,
+      decimals: (_g = (_f = source.decimals) != null ? _f : inherited.decimals) != null ? _g : 1,
+      deadband: (_i = (_h = source.deadband) != null ? _h : inherited.deadband) != null ? _i : 0.5,
+      position: (_k = (_j = source.position) != null ? _j : inherited.position) != null ? _k : "after_name"
+    };
+  }
   function normalizeEntityConfig(entityConfig, cardConfig) {
     var _a;
     const normalizedEntity = {
@@ -473,6 +486,7 @@
     normalizedEntity.formatting = normalizeFormattingConfig(entityConfig, cardConfig);
     normalizedEntity.target_marker = normalizeTargetMarkerConfig(entityConfig, cardConfig);
     normalizedEntity.peak_marker = normalizePeakMarkerConfig(entityConfig, cardConfig);
+    normalizedEntity.trend = normalizeTrendConfig(entityConfig, cardConfig);
     normalizedEntity.min = normalizedEntity.scale.min.fixed;
     normalizedEntity.min_entity = normalizedEntity.scale.min.entity;
     normalizedEntity.max = normalizedEntity.scale.max.fixed;
@@ -550,6 +564,7 @@
     normalizedCard.formatting = normalizeFormattingConfig(baseConfig, null);
     normalizedCard.target_marker = normalizeTargetMarkerConfig(baseConfig, null);
     normalizedCard.peak_marker = normalizePeakMarkerConfig(baseConfig, null);
+    normalizedCard.trend = normalizeTrendConfig(baseConfig, null);
     normalizedCard.entities = baseConfig.entities.map(
       (entityCfg) => normalizeEntityConfig(entityCfg, normalizedCard)
     );
@@ -726,6 +741,21 @@
       }
     }
   }
+  function validateTrend(diagnostics, trend, path, entity = null) {
+    if (!(trend == null ? void 0 : trend.show)) return;
+    if (!Number.isFinite(trend.hours) || trend.hours <= 0) {
+      addWarning(diagnostics, "trend.invalid_hours", "Trend hours must be greater than zero.", `${path}.trend.hours`, entity);
+    }
+    if (!Number.isInteger(trend.decimals) || trend.decimals < 0 || trend.decimals > 10) {
+      addWarning(diagnostics, "trend.invalid_decimals", "Trend decimals must be an integer from 0 to 10.", `${path}.trend.decimals`, entity);
+    }
+    if (!Number.isFinite(trend.deadband) || trend.deadband < 0) {
+      addWarning(diagnostics, "trend.invalid_deadband", "Trend deadband must be zero or greater.", `${path}.trend.deadband`, entity);
+    }
+    if (trend.position !== "after_name") {
+      addWarning(diagnostics, "trend.invalid_position", "The only supported trend position is after_name.", `${path}.trend.position`, entity);
+    }
+  }
   function validateConfigScope(diagnostics, config, path, entity = null) {
     var _a, _b;
     const scaleBounds = validateScaleBounds(diagnostics, config == null ? void 0 : config.scale, path, entity);
@@ -734,6 +764,7 @@
     validateBaselineSuppressesNeedle(diagnostics, config, path, entity);
     validateSegments(diagnostics, (_a = config == null ? void 0 : config.bar) == null ? void 0 : _a.segments, scaleBounds, `${path}.bar`, entity);
     validateGradientStops(diagnostics, (_b = config == null ? void 0 : config.bar) == null ? void 0 : _b.gradient_stops, `${path}.bar`, entity);
+    validateTrend(diagnostics, config == null ? void 0 : config.trend, path, entity);
   }
   function validateNormalizedConfig(config) {
     var _a;
@@ -1003,6 +1034,56 @@
     }
   });
 
+  // src/trend/history.js
+  function stateTimestamp(state) {
+    var _a, _b;
+    const raw = (_b = (_a = state == null ? void 0 : state.last_changed) != null ? _a : state == null ? void 0 : state.last_updated) != null ? _b : state == null ? void 0 : state.lu;
+    if (typeof raw === "number") return raw * 1e3;
+    const timestamp = Date.parse(raw != null ? raw : "");
+    return Number.isFinite(timestamp) ? timestamp : null;
+  }
+  function getOldestTrendValue(history, cutoffMs) {
+    var _a, _b;
+    if (!Array.isArray(history)) return null;
+    let oldest = null;
+    for (const state of history) {
+      const value = getFiniteNumber((_a = state == null ? void 0 : state.state) != null ? _a : state == null ? void 0 : state.s);
+      const timestamp = stateTimestamp(state);
+      if (value === null || timestamp === null || timestamp < cutoffMs) continue;
+      if (!oldest || timestamp < oldest.timestamp) oldest = { value, timestamp };
+    }
+    return (_b = oldest == null ? void 0 : oldest.value) != null ? _b : null;
+  }
+  function calculateTrend(currentState, history, config, nowMs = Date.now()) {
+    if (!(config == null ? void 0 : config.show)) return null;
+    const current = getFiniteNumber(currentState == null ? void 0 : currentState.state);
+    if (current === null) return null;
+    const oldest = getOldestTrendValue(history, nowMs - config.hours * 60 * 60 * 1e3);
+    if (oldest === null) return null;
+    const delta = current - oldest;
+    const deadband = Number.isFinite(config.deadband) && config.deadband >= 0 ? config.deadband : 0.5;
+    const arrow = delta > deadband ? "\u2191" : delta < -deadband ? "\u2193" : "\u2192";
+    return { delta, arrow };
+  }
+  function indexHistoryResponse(response, entityIds) {
+    const indexed = {};
+    if (!Array.isArray(response)) return indexed;
+    response.forEach((states, index) => {
+      var _a, _b;
+      if (!Array.isArray(states)) return;
+      const entityId = (_b = (_a = states.find((state) => state == null ? void 0 : state.entity_id)) == null ? void 0 : _a.entity_id) != null ? _b : entityIds[index];
+      if (entityId) indexed[entityId] = states;
+    });
+    return indexed;
+  }
+  var TREND_CACHE_MS;
+  var init_history = __esm({
+    "src/trend/history.js"() {
+      init_normalize();
+      TREND_CACHE_MS = 5 * 60 * 1e3;
+    }
+  });
+
   // src/card/SensorBarCard.js
   var SensorBarCard;
   var init_SensorBarCard = __esm({
@@ -1012,6 +1093,7 @@
       init_validate();
       init_row_view_model();
       init_dom();
+      init_history();
       SensorBarCard = class extends HTMLElement {
         static getConfigElement() {
           return document.createElement("sensor-bar-card-plus-editor");
@@ -1025,6 +1107,10 @@
           this._lastDiagnosticsSignature = null;
           this._hass = null;
           this._peaks = {};
+          this._trendHistory = {};
+          this._trendCacheKey = null;
+          this._trendFetchedAt = 0;
+          this._trendRequest = null;
           this._rendered = false;
           this._resizeObserver = null;
           this._densityPassScheduled = false;
@@ -1054,6 +1140,8 @@
           }
           this._rendered = false;
           this._config = this.normalizeCardConfig(config);
+          this._trendCacheKey = null;
+          this._trendFetchedAt = 0;
           const activeEntityIds = new Set(
             (this._config.entities || []).map((entityConfig) => entityConfig.entity)
           );
@@ -1065,6 +1153,7 @@
           this._diagnostics = validateNormalizedConfig(this._config);
           this._logDiagnostics();
           this._render();
+          this._ensureTrendHistory();
         }
         _logDiagnostics() {
           var _a;
@@ -1180,12 +1269,16 @@
         normalizePeakMarkerConfig(entityConfig, cardConfig) {
           return normalizePeakMarkerConfig(entityConfig, cardConfig);
         }
+        normalizeTrendConfig(entityConfig, cardConfig) {
+          return normalizeTrendConfig(entityConfig, cardConfig);
+        }
         _normalizeOptionalEnabled(value) {
           return normalizeOptionalEnabled(value);
         }
         set hass(hass) {
           const oldHass = this._hass;
           this._hass = hass;
+          this._ensureTrendHistory();
           if (!oldHass) {
             this._update();
             return;
@@ -1193,6 +1286,60 @@
           if (this._shouldUpdate(oldHass, hass)) {
             this._update();
           }
+        }
+        _getTrendEntities() {
+          var _a, _b;
+          return ((_b = (_a = this._config) == null ? void 0 : _a.entities) != null ? _b : []).filter((entity) => {
+            var _a2;
+            return ((_a2 = entity.trend) == null ? void 0 : _a2.show) && Number.isFinite(entity.trend.hours) && entity.trend.hours > 0;
+          });
+        }
+        async _ensureTrendHistory() {
+          var _a;
+          if (!((_a = this._hass) == null ? void 0 : _a.callWS)) return;
+          const entities = this._getTrendEntities();
+          if (!entities.length) return;
+          const entityIds = entities.map((entity) => entity.entity);
+          const maxHours = Math.max(...entities.map((entity) => entity.trend.hours));
+          const cacheKey = `${entityIds.join(",")}|${maxHours}`;
+          if (this._trendRequest) return this._trendRequest;
+          if (this._trendCacheKey === cacheKey && Date.now() - this._trendFetchedAt < TREND_CACHE_MS) return;
+          const end = /* @__PURE__ */ new Date();
+          const start = new Date(end.getTime() - maxHours * 60 * 60 * 1e3);
+          this._trendRequest = this._hass.callWS({
+            type: "history/history_during_period",
+            start_time: start.toISOString(),
+            end_time: end.toISOString(),
+            entity_ids: entityIds,
+            minimal_response: false,
+            no_attributes: true,
+            significant_changes_only: false
+          }).then((response) => {
+            this._trendHistory = indexHistoryResponse(response, entityIds);
+            this._trendCacheKey = cacheKey;
+            this._trendFetchedAt = Date.now();
+            this._update();
+          }).catch((error) => {
+            console.warn("[sensor-bar-card-plus] Unable to load trend history", error);
+          }).finally(() => {
+            this._trendRequest = null;
+          });
+          return this._trendRequest;
+        }
+        _formatTrendMarkup(entityCfg, stateObj) {
+          var _a, _b, _c, _d;
+          const config = entityCfg == null ? void 0 : entityCfg.trend;
+          if (!(config == null ? void 0 : config.show) || config.position !== "after_name") return "";
+          const trend = calculateTrend(stateObj, this._trendHistory[entityCfg.entity], config);
+          if (!trend) return "";
+          const decimals = Number.isInteger(config.decimals) ? Math.max(0, Math.min(10, config.decimals)) : 1;
+          const magnitude = Math.abs(trend.delta).toFixed(decimals);
+          const unit = (_d = (_c = (_a = entityCfg.formatting) == null ? void 0 : _a.unit) != null ? _c : (_b = stateObj == null ? void 0 : stateObj.attributes) == null ? void 0 : _b.unit_of_measurement) != null ? _d : "";
+          return `<span class="trend-indicator" aria-label="Change ${escapeHtml(trend.delta.toFixed(decimals))} ${escapeHtml(unit)}">${trend.arrow} ${escapeHtml(magnitude)}${unit ? ` ${escapeHtml(unit)}` : ""}</span>`;
+        }
+        _formatNameMarkup(name, entityCfg, stateObj) {
+          const trendMarkup = this._formatTrendMarkup(entityCfg, stateObj);
+          return trendMarkup ? `<span class="entity-name">${escapeHtml(name)}</span>${trendMarkup}` : escapeHtml(name);
         }
         // Merge global config with per-entity overrides
         _resolve(entityCfg) {
@@ -2005,6 +2152,16 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+        }
+        .entity-name {
+          display: inline;
+        }
+        .trend-indicator {
+          display: inline;
+          margin-left: 0.35em;
+          color: var(--secondary-text-color, #727272);
+          font-variant-numeric: tabular-nums;
+          font-weight: 500;
         }
         .bar-wrap {
           flex: 1 1 var(--sbcp-bar-min-width);
@@ -3694,7 +3851,7 @@
           const h = (_f = (_e = rowViewModel == null ? void 0 : rowViewModel.attributes) == null ? void 0 : _e.baseHeight) != null ? _f : layout.height;
           const name = (_j = (_i = (_g = rowViewModel == null ? void 0 : rowViewModel.name) != null ? _g : ecfg.name) != null ? _i : (_h = stateObj == null ? void 0 : stateObj.attributes) == null ? void 0 : _h.friendly_name) != null ? _j : entityCfg.entity;
           const escapedEntityId = escapeHtml((_k = rowViewModel == null ? void 0 : rowViewModel.entityId) != null ? _k : entityCfg.entity);
-          const escapedName = escapeHtml(name);
+          const nameMarkup = this._formatNameMarkup(name, ecfg, stateObj);
           const targetEnabled = (targetMarkerCfg == null ? void 0 : targetMarkerCfg.enabled) !== false;
           const peakMarkerColor = peakColor || "#888";
           const targetMarkerColor = targetColor || "#888";
@@ -3727,7 +3884,7 @@
       <div class="above-line">
         ${ecfg.icon && ecfg.icon !== false ? `<div class="above-icon-spacer"></div>` : ""}
         <div class="above-bar-label">
-          <span class="above-bar-label-name label-left-text">${escapedName}</span>
+          <span class="above-bar-label-name label-left-text">${nameMarkup}</span>
           ${this._formatAboveValueMarkup(stateDisplay, unit, false)}
         </div>
       </div>` : "";
@@ -3736,16 +3893,16 @@
           const heroHeader = lp === "hero" ? `
       <div class="hero-line" data-hero-size="${heroSize}"${Number.isFinite(heroFontSize) ? ` style="--sbcp-hero-base-size:${heroFontSize}px"` : ""}>
         <div class="hero-header">
-          <span class="hero-label label-left-text">${escapedName}</span>
+          <span class="hero-label label-left-text">${nameMarkup}</span>
           <span class="hero-value" data-display="${this._encodeDataAttr(stateDisplay)}" data-unit="${this._encodeDataAttr(unit)}">${this._formatRightValueMarkup(stateDisplay, unit, false)}</span>
         </div>
       </div>` : "";
           const innerLabel = lp === "inside" ? `
       <div class="bar-inner-label">
-        <span class="inside-name">${escapedName}</span>
+        <span class="inside-name">${nameMarkup}</span>
         <span class="inside-value" data-display="${this._encodeDataAttr(stateDisplay)}" data-unit="${this._encodeDataAttr(unit)}" data-hide-unit="false" data-hide-value="false">${this._formatInsideValueMarkup(stateDisplay, unit, false)}</span>
       </div>` : "";
-          const leftLabel = lp === "left" ? `<div class="label-left" style="flex:0 1 min(${layout.label.width}px, var(--sbcp-left-label-share));max-width:min(${layout.label.width}px, var(--sbcp-left-label-share));"><span class="label-left-text">${escapedName}</span></div>` : "";
+          const leftLabel = lp === "left" ? `<div class="label-left" style="flex:0 1 min(${layout.label.width}px, var(--sbcp-left-label-share));max-width:min(${layout.label.width}px, var(--sbcp-left-label-share));"><span class="label-left-text">${nameMarkup}</span></div>` : "";
           const rightValue = lp !== "inside" && lp !== "above" && lp !== "hero" ? `<div class="value-right" data-display="${this._encodeDataAttr(stateDisplay)}" data-unit="${this._encodeDataAttr(unit)}" data-hide-unit="false">${this._formatRightValueMarkup(stateDisplay, unit, false)}</div>` : "";
           const topRightValue = lp === "left" ? `<div class="top-right-value" data-display="${this._encodeDataAttr(stateDisplay)}" data-unit="${this._encodeDataAttr(unit)}" data-hide-unit="false" data-active="false">${this._formatRightValueMarkup(stateDisplay, unit, false)}</div>` : "";
           const escapedIcon = ecfg.icon && ecfg.icon !== false ? escapeHtml(ecfg.icon) : "";
@@ -3862,12 +4019,16 @@ ${paintLayers}
               "--sbcp-hero-base-size",
               Number.isFinite(ecfg.layout.hero.value_size) ? `${ecfg.layout.hero.value_size}px` : null
             );
-            heroHeader.innerHTML = `<span class="hero-label label-left-text">${escapeHtml(rowViewModel.name)}</span><span class="hero-value" data-display="${this._encodeDataAttr(display)}" data-unit="${this._encodeDataAttr(displayUnit)}">${this._formatRightValueMarkup(display, displayUnit, false)}</span>`;
+            heroHeader.innerHTML = `<span class="hero-label label-left-text">${this._formatNameMarkup(rowViewModel.name, ecfg, stateObj)}</span><span class="hero-value" data-display="${this._encodeDataAttr(display)}" data-unit="${this._encodeDataAttr(displayUnit)}">${this._formatRightValueMarkup(display, displayUnit, false)}</span>`;
           }
           const aboveLabel = heroHeader ? null : row.querySelector(".above-bar-label");
           if (aboveLabel) {
-            aboveLabel.innerHTML = `<span class="above-bar-label-name label-left-text">${escapeHtml(rowViewModel.name)}</span>${this._formatAboveValueMarkup(display, displayUnit, false)}`;
+            aboveLabel.innerHTML = `<span class="above-bar-label-name label-left-text">${this._formatNameMarkup(rowViewModel.name, ecfg, stateObj)}</span>${this._formatAboveValueMarkup(display, displayUnit, false)}`;
           }
+          const leftName = row.querySelector(".label-left .label-left-text");
+          if (leftName) leftName.innerHTML = this._formatNameMarkup(rowViewModel.name, ecfg, stateObj);
+          const insideName = row.querySelector(".inside-name");
+          if (insideName) insideName.innerHTML = this._formatNameMarkup(rowViewModel.name, ecfg, stateObj);
           if (ecfg.peak_marker.show && Number.isFinite(rawVal)) {
             const key = entityCfg.entity;
             if (this._peaks[key] === void 0 || rawVal > this._peaks[key]) {
