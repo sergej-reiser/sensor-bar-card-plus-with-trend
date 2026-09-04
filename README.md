@@ -1579,6 +1579,13 @@ peak
 formatting
 ├── decimal
 └── unit
+
+trend
+├── show
+├── hours
+├── decimals
+├── deadband
+└── position
 ```
 
 ## Modern Configuration Overview
@@ -1619,8 +1626,37 @@ formatting
 | `peak.color` | `#888888` | CSS color | Peak marker color. |
 | `formatting.decimal` | `null` | number | Decimal places for displayed numeric values. |
 | `formatting.unit` | entity unit | string | Display unit override. |
+| `trend.show` | `false` | boolean | Loads history and shows a delta beside the entity name. |
+| `trend.hours` | `24` | positive number | Historical lookback period in hours. |
+| `trend.decimals` | `1` | `0–10` | Decimal places used for the delta. |
+| `trend.deadband` | `0.5` | non-negative number | Absolute delta considered stable and rendered with `→`. |
+| `trend.position` | `after_name` | `after_name` | Placement of the trend indicator. |
 
 Legacy flat options are listed separately in the Legacy Compatibility / Migration section. They remain supported, but new dashboards should prefer the structured paths above.
+
+### History-based trend indicator
+
+Trend settings may be defined once at card level and overridden per entity. The card fetches all enabled entities in one Home Assistant history request, caches the result for five minutes, ignores non-numeric states, and hides the indicator when no usable current or historical value exists.
+
+```yaml
+type: custom:sensor-bar-card-plus
+trend:
+  show: true
+  hours: 24
+  decimals: 1
+  deadband: 0.5
+  position: after_name
+entities:
+  - entity: sensor.wohnzimmer_palme_bodenfeuchtigkeit
+    name: Palme
+  - entity: sensor.wohnzimmer_strubbelkopf_bodenfeuchtigkeit
+    name: Senecio
+    trend:
+      hours: 12
+      deadband: 1
+```
+
+The displayed delta is `current value - oldest valid value within the lookback period`. A delta above the deadband uses `↑`, one below the negative deadband uses `↓`, and a delta inside the deadband uses `→`. The entity's displayed unit is reused for the delta.
 
 ## Top-Level Card Options
 
@@ -1636,6 +1672,7 @@ Legacy flat options are listed separately in the Legacy Compatibility / Migratio
 | `target` | number/object | disabled | Default target marker, including legacy fixed shorthand |
 | `peak` | object | disabled | Default structured peak marker config |
 | `formatting` | object | `decimal: null`, `unit: null` | Default numeric formatting |
+| `trend` | object | disabled | Default history-based trend settings for all rows |
 | `label_position` | string | `left` | Legacy alias for `layout.label.position` |
 | `label_width` | number | `100` | Legacy alias for `layout.label.width` |
 | `height` | number | `38` | Legacy alias for `layout.height`; rendered minimum is `24` |
@@ -1675,6 +1712,7 @@ Entity-level configuration uses the same structured option groups as card-level 
 | `peak` | object | Per-row peak override |
 | `baseline` | object/number/null | Per-row baseline override or explicit disable |
 | `formatting` | object | Per-row decimal and unit override |
+| `trend` | object/boolean | Per-row trend overrides, or `false` to disable the inherited trend |
 | `label_position` | string | Legacy alias for `layout.label.position` |
 | `label_width` | number | Legacy alias for `layout.label.width` |
 | `height` | number | Legacy alias for `layout.height` |

@@ -141,6 +141,22 @@ function validateGradientStops(diagnostics, stops, path, entity = null) {
   }
 }
 
+function validateTrend(diagnostics, trend, path, entity = null) {
+  if (!trend?.show) return;
+  if (!Number.isFinite(trend.hours) || trend.hours <= 0) {
+    addWarning(diagnostics, 'trend.invalid_hours', 'Trend hours must be greater than zero.', `${path}.trend.hours`, entity);
+  }
+  if (!Number.isInteger(trend.decimals) || trend.decimals < 0 || trend.decimals > 10) {
+    addWarning(diagnostics, 'trend.invalid_decimals', 'Trend decimals must be an integer from 0 to 10.', `${path}.trend.decimals`, entity);
+  }
+  if (!Number.isFinite(trend.deadband) || trend.deadband < 0) {
+    addWarning(diagnostics, 'trend.invalid_deadband', 'Trend deadband must be zero or greater.', `${path}.trend.deadband`, entity);
+  }
+  if (trend.position !== 'after_name') {
+    addWarning(diagnostics, 'trend.invalid_position', 'The only supported trend position is after_name.', `${path}.trend.position`, entity);
+  }
+}
+
 function validateConfigScope(diagnostics, config, path, entity = null) {
   const scaleBounds = validateScaleBounds(diagnostics, config?.scale, path, entity);
   validateTargetRange(diagnostics, config, scaleBounds, path, entity);
@@ -148,6 +164,7 @@ function validateConfigScope(diagnostics, config, path, entity = null) {
   validateBaselineSuppressesNeedle(diagnostics, config, path, entity);
   validateSegments(diagnostics, config?.bar?.segments, scaleBounds, `${path}.bar`, entity);
   validateGradientStops(diagnostics, config?.bar?.gradient_stops, `${path}.bar`, entity);
+  validateTrend(diagnostics, config?.trend, path, entity);
 }
 
 export function validateNormalizedConfig(config) {

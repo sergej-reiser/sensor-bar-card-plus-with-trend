@@ -22,6 +22,7 @@ import {
   normalizeSeverityToSegments,
   normalizeStructuredResolvableValue,
   normalizeTargetMarkerConfig,
+  normalizeTrendConfig,
   parsePercentLiteral,
   resolveNormalizedBarMode,
   fillStyleToColorMode,
@@ -35,6 +36,7 @@ import {
 import { validateNormalizedConfig } from '../config/validate.js';
 import { buildRowViewModel } from '../view-model/row-view-model.js';
 import { escapeHtml } from '../utils/dom.js';
+import { calculateTrend, indexHistoryResponse, TREND_CACHE_MS } from '../trend/history.js';
 
 /**
  * sensor-bar-card-plus - A polished, configurable sensor bar card for Home Assistant
@@ -177,6 +179,10 @@ export class SensorBarCard extends HTMLElement {
     this._lastDiagnosticsSignature = null;
     this._hass = null;
     this._peaks = {};
+    this._trendHistory = {};
+    this._trendCacheKey = null;
+    this._trendFetchedAt = 0;
+    this._trendRequest = null;
     this._rendered = false;
     this._resizeObserver = null;
     this._densityPassScheduled = false;
@@ -209,6 +215,8 @@ export class SensorBarCard extends HTMLElement {
     }
     this._rendered = false; // force full rebuild on config change
     this._config = this.normalizeCardConfig(config);
+    this._trendCacheKey = null;
+    this._trendFetchedAt = 0;
     const activeEntityIds = new Set(
       (this._config.entities || []).map((entityConfig) => entityConfig.entity)
     );
@@ -220,6 +228,7 @@ export class SensorBarCard extends HTMLElement {
     this._diagnostics = validateNormalizedConfig(this._config);
     this._logDiagnostics();
     this._render();
+    this._ensureTrendHistory();
   }
 
   _logDiagnostics() {
@@ -366,6 +375,10 @@ export class SensorBarCard extends HTMLElement {
     return normalizePeakMarkerConfig(entityConfig, cardConfig);
   }
 
+  normalizeTrendConfig(entityConfig, cardConfig) {
+    return normalizeTrendConfig(entityConfig, cardConfig);
+  }
+
   _normalizeOptionalEnabled(value) {
     return normalizeOptionalEnabled(value);
   }
@@ -373,6 +386,7 @@ export class SensorBarCard extends HTMLElement {
   set hass(hass) {
     const oldHass = this._hass;
     this._hass = hass;
+    this._ensureTrendHistory();
     
     if (!oldHass) {
       this._update();
@@ -382,6 +396,65 @@ export class SensorBarCard extends HTMLElement {
     if (this._shouldUpdate(oldHass, hass)) {
       this._update();
     }
+  }
+
+  _getTrendEntities() {
+    return (this._config?.entities ?? []).filter((entity) => (
+      entity.trend?.show && Number.isFinite(entity.trend.hours) && entity.trend.hours > 0
+    ));
+  }
+
+  async _ensureTrendHistory() {
+    if (!this._hass?.callWS) return;
+    const entities = this._getTrendEntities();
+    if (!entities.length) return;
+    const entityIds = entities.map((entity) => entity.entity);
+    const maxHours = Math.max(...entities.map((entity) => entity.trend.hours));
+    const cacheKey = `${entityIds.join(',')}|${maxHours}`;
+    if (this._trendRequest) return this._trendRequest;
+    if (this._trendCacheKey === cacheKey && Date.now() - this._trendFetchedAt < TREND_CACHE_MS) return;
+
+    const end = new Date();
+    const start = new Date(end.getTime() - maxHours * 60 * 60 * 1000);
+    this._trendRequest = this._hass.callWS({
+      type: 'history/history_during_period',
+      start_time: start.toISOString(),
+      end_time: end.toISOString(),
+      entity_ids: entityIds,
+      minimal_response: false,
+      no_attributes: true,
+      significant_changes_only: false,
+    }).then((response) => {
+      this._trendHistory = indexHistoryResponse(response, entityIds);
+      this._trendCacheKey = cacheKey;
+      this._trendFetchedAt = Date.now();
+      this._update();
+    }).catch((error) => {
+      console.warn('[sensor-bar-card-plus] Unable to load trend history', error);
+    }).finally(() => {
+      this._trendRequest = null;
+    });
+    return this._trendRequest;
+  }
+
+  _formatTrendMarkup(entityCfg, stateObj) {
+    const config = entityCfg?.trend;
+    if (!config?.show || config.position !== 'after_name') return '';
+    const trend = calculateTrend(stateObj, this._trendHistory[entityCfg.entity], config);
+    if (!trend) return '';
+    const decimals = Number.isInteger(config.decimals)
+      ? Math.max(0, Math.min(10, config.decimals))
+      : 1;
+    const magnitude = Math.abs(trend.delta).toFixed(decimals);
+    const unit = entityCfg.formatting?.unit ?? stateObj?.attributes?.unit_of_measurement ?? '';
+    return `<span class="trend-indicator" aria-label="Change ${escapeHtml(trend.delta.toFixed(decimals))} ${escapeHtml(unit)}">${trend.arrow} ${escapeHtml(magnitude)}${unit ? ` ${escapeHtml(unit)}` : ''}</span>`;
+  }
+
+  _formatNameMarkup(name, entityCfg, stateObj) {
+    const trendMarkup = this._formatTrendMarkup(entityCfg, stateObj);
+    return trendMarkup
+      ? `<span class="entity-name">${escapeHtml(name)}</span>${trendMarkup}`
+      : escapeHtml(name);
   }
 
   // Merge global config with per-entity overrides
@@ -1310,6 +1383,16 @@ _getAboveTargetLayerGeometry(targetPct = null) {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+        }
+        .entity-name {
+          display: inline;
+        }
+        .trend-indicator {
+          display: inline;
+          margin-left: 0.35em;
+          color: var(--secondary-text-color, #727272);
+          font-variant-numeric: tabular-nums;
+          font-weight: 500;
         }
         .bar-wrap {
           flex: 1 1 var(--sbcp-bar-min-width);
@@ -3201,7 +3284,7 @@ _getAboveTargetLayerGeometry(targetPct = null) {
       ?? stateObj?.attributes?.friendly_name
       ?? entityCfg.entity;
     const escapedEntityId = escapeHtml(rowViewModel?.entityId ?? entityCfg.entity);
-    const escapedName = escapeHtml(name);
+    const nameMarkup = this._formatNameMarkup(name, ecfg, stateObj);
     const targetEnabled = targetMarkerCfg?.enabled !== false;
     const peakMarkerColor = peakColor || '#888';
     const targetMarkerColor = targetColor || '#888';
@@ -3238,7 +3321,7 @@ _getAboveTargetLayerGeometry(targetPct = null) {
       <div class="above-line">
         ${ecfg.icon && ecfg.icon !== false ? `<div class="above-icon-spacer"></div>` : ''}
         <div class="above-bar-label">
-          <span class="above-bar-label-name label-left-text">${escapedName}</span>
+          <span class="above-bar-label-name label-left-text">${nameMarkup}</span>
           ${this._formatAboveValueMarkup(stateDisplay, unit, false)}
         </div>
       </div>` : '';
@@ -3247,19 +3330,19 @@ _getAboveTargetLayerGeometry(targetPct = null) {
     const heroHeader = lp === 'hero' ? `
       <div class="hero-line" data-hero-size="${heroSize}"${Number.isFinite(heroFontSize) ? ` style="--sbcp-hero-base-size:${heroFontSize}px"` : ''}>
         <div class="hero-header">
-          <span class="hero-label label-left-text">${escapedName}</span>
+          <span class="hero-label label-left-text">${nameMarkup}</span>
           <span class="hero-value" data-display="${this._encodeDataAttr(stateDisplay)}" data-unit="${this._encodeDataAttr(unit)}">${this._formatRightValueMarkup(stateDisplay, unit, false)}</span>
         </div>
       </div>` : '';
 
     const innerLabel = lp === 'inside' ? `
       <div class="bar-inner-label">
-        <span class="inside-name">${escapedName}</span>
+        <span class="inside-name">${nameMarkup}</span>
         <span class="inside-value" data-display="${this._encodeDataAttr(stateDisplay)}" data-unit="${this._encodeDataAttr(unit)}" data-hide-unit="false" data-hide-value="false">${this._formatInsideValueMarkup(stateDisplay, unit, false)}</span>
       </div>` : '';
 
     const leftLabel  = lp === 'left'
-      ? `<div class="label-left" style="flex:0 1 min(${layout.label.width}px, var(--sbcp-left-label-share));max-width:min(${layout.label.width}px, var(--sbcp-left-label-share));"><span class="label-left-text">${escapedName}</span></div>`
+      ? `<div class="label-left" style="flex:0 1 min(${layout.label.width}px, var(--sbcp-left-label-share));max-width:min(${layout.label.width}px, var(--sbcp-left-label-share));"><span class="label-left-text">${nameMarkup}</span></div>`
       : '';
     const rightValue = lp !== 'inside' && lp !== 'above' && lp !== 'hero'
       ? `<div class="value-right" data-display="${this._encodeDataAttr(stateDisplay)}" data-unit="${this._encodeDataAttr(unit)}" data-hide-unit="false">${this._formatRightValueMarkup(stateDisplay, unit, false)}</div>`
@@ -3387,12 +3470,16 @@ ${paintLayers}
         '--sbcp-hero-base-size',
         Number.isFinite(ecfg.layout.hero.value_size) ? `${ecfg.layout.hero.value_size}px` : null
       );
-      heroHeader.innerHTML = `<span class="hero-label label-left-text">${escapeHtml(rowViewModel.name)}</span><span class="hero-value" data-display="${this._encodeDataAttr(display)}" data-unit="${this._encodeDataAttr(displayUnit)}">${this._formatRightValueMarkup(display, displayUnit, false)}</span>`;
+      heroHeader.innerHTML = `<span class="hero-label label-left-text">${this._formatNameMarkup(rowViewModel.name, ecfg, stateObj)}</span><span class="hero-value" data-display="${this._encodeDataAttr(display)}" data-unit="${this._encodeDataAttr(displayUnit)}">${this._formatRightValueMarkup(display, displayUnit, false)}</span>`;
     }
     const aboveLabel = heroHeader ? null : row.querySelector('.above-bar-label');
     if (aboveLabel) {
-      aboveLabel.innerHTML = `<span class="above-bar-label-name label-left-text">${escapeHtml(rowViewModel.name)}</span>${this._formatAboveValueMarkup(display, displayUnit, false)}`;
+      aboveLabel.innerHTML = `<span class="above-bar-label-name label-left-text">${this._formatNameMarkup(rowViewModel.name, ecfg, stateObj)}</span>${this._formatAboveValueMarkup(display, displayUnit, false)}`;
     }
+    const leftName = row.querySelector('.label-left .label-left-text');
+    if (leftName) leftName.innerHTML = this._formatNameMarkup(rowViewModel.name, ecfg, stateObj);
+    const insideName = row.querySelector('.inside-name');
+    if (insideName) insideName.innerHTML = this._formatNameMarkup(rowViewModel.name, ecfg, stateObj);
 
     if (ecfg.peak_marker.show && Number.isFinite(rawVal)) {
       const key = entityCfg.entity;

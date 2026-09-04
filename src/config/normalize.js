@@ -499,6 +499,19 @@ export function normalizePeakMarkerConfig(entityConfig, cardConfig) {
   };
 }
 
+export function normalizeTrendConfig(entityConfig, cardConfig) {
+  const inherited = cardConfig?.trend ?? {};
+  const raw = entityConfig?.trend;
+  const source = raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
+  return {
+    show: source.show ?? (raw === false ? false : inherited.show ?? false),
+    hours: source.hours ?? inherited.hours ?? 24,
+    decimals: source.decimals ?? inherited.decimals ?? 1,
+    deadband: source.deadband ?? inherited.deadband ?? 0.5,
+    position: source.position ?? inherited.position ?? 'after_name',
+  };
+}
+
 export function normalizeEntityConfig(entityConfig, cardConfig) {
   const normalizedEntity = {
     ...entityConfig,
@@ -515,6 +528,7 @@ export function normalizeEntityConfig(entityConfig, cardConfig) {
   normalizedEntity.formatting = normalizeFormattingConfig(entityConfig, cardConfig);
   normalizedEntity.target_marker = normalizeTargetMarkerConfig(entityConfig, cardConfig);
   normalizedEntity.peak_marker = normalizePeakMarkerConfig(entityConfig, cardConfig);
+  normalizedEntity.trend = normalizeTrendConfig(entityConfig, cardConfig);
 
   normalizedEntity.min = normalizedEntity.scale.min.fixed;
   normalizedEntity.min_entity = normalizedEntity.scale.min.entity;
@@ -597,6 +611,7 @@ export function normalizeCardConfig(rawConfig) {
   normalizedCard.formatting = normalizeFormattingConfig(baseConfig, null);
   normalizedCard.target_marker = normalizeTargetMarkerConfig(baseConfig, null);
   normalizedCard.peak_marker = normalizePeakMarkerConfig(baseConfig, null);
+  normalizedCard.trend = normalizeTrendConfig(baseConfig, null);
   normalizedCard.entities = baseConfig.entities.map((entityCfg) =>
     normalizeEntityConfig(entityCfg, normalizedCard)
   );
